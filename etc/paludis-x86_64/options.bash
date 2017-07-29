@@ -411,9 +411,6 @@ games-fps/iortcw engine data linguas: espanol
 media-sound/ardour lv2 linuxvst optimize
 sys-fs/squashfs-tools xs lzo lz4
 
-#Para media/mpv:
-media/mpv cd dvd dvd-menu opengl pulseaudio screensaver
-media-libs/libass fontconfig
 games-fps/doomsday doom fluidsynth openal resources snowberry tools
 
 games-emulation/mupen64plus-core asm

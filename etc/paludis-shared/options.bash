@@ -21,6 +21,13 @@ echo '
 
 	app-text/poppler lcms cairo
 	net-dns/avahi dbus dns_sd
+	app-emulation/wine opengl gstreamer mono staging s3tc pulseaudio -vaapi -scanner -samba -oss openal
+	sys-sound/alsa-plugins pulseaudio
+	media-libs/openal pulseaudio
+
+	#Para media/mpv:
+	media/mpv cd dvd dvd-menu opengl pulseaudio screensaver
+	media-libs/libass fontconfig
 
 	#Requerido por la constraint opencl de mesa i915
 	#xa xvmc
@@ -44,10 +51,6 @@ echo '
 	#Para git
 	dev-lang/swig perl
 	dev-scm/subversion perl
-
-	app-emulation/wine opengl gstreamer mono staging s3tc pulseaudio -vaapi -scanner -samba -oss openal
-	sys-sound/alsa-plugins pulseaudio
-	media-libs/openal pulseaudio
 
 	sys-devel/meson python_abis: 3.5
 
