@@ -1,5 +1,7 @@
 #!/bin/sh
 
+PYTHON=/usr/i686-pc-linux-gnu/bin/python2.7
+
 . /etc/paludis-shared/bashrc
 
 #i686_pc_linux_gnu_CFLAGS+=" -m32"
