@@ -1,5 +1,7 @@
 CHOST='x86_64-pc-linux-gnu'
 ARCH=''
+
+#Para LD: -Bsymbolic-functions, http://stackoverflow.com/questions/7216973/is-there-a-downside-to-using-bsymbolic-functions
 #EXHERBO_DEFAULT='-march=native -O2 -pipe -fomit-frame-pointer'
 #inline problems: -U_FORTIFY_SOURCE -fno-stack-protector
 #gobject-introspection: ac_cv_func_malloc_0_nonnull=yes
@@ -7,16 +9,18 @@ ARCH=''
 #Revisar https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html#Optimize-Options
 COMMON=' -pipe'
 NORMAL="-O2 $COMMON -fomit-frame-pointer"
+#Agregar -flto, quitar fno-inline-functions
 # Brokes all ld tasks: -fvisibility=hidden
 # -Ofast=-ffast-math -fstack-arrays -fno-protect-parens
 # -flto
 AGRESSIVE='-Ofast -ffast-math -fomit-frame-pointer -funroll-loops -fuse-linker-plugin'
+XGCC_NO_COMPILE="-mno-clflushopt -mno-xsavec -mno-xsaves -mno-avx512dq -mno-avx512bw -mno-avx512vl -mno-avx512ifma -mno-avx512vbmi -mno-clwb -mno-pcommit -mno-mwaitx"
 NATIVE_SPECIFIC='-march=westmere -mmmx -mno-3dnow -msse -msse2 -msse3 -mssse3 -mno-sse4a -mcx16 -msahf -mno-movbe -mno-aes -mno-sha -mno-pclmul -mpopcnt -mno-abm -mno-lwp -mno-fma -mno-fma4 -mno-xop -mno-bmi -mno-bmi2 -mno-tbm -mno-avx -mno-avx2 -mno-sse4 -mno-sse4.2 -mno-sse4.1 -mno-lzcnt -mno-rtm -mno-hle -mno-rdrnd -mno-f16c -mno-fsgsbase -mno-rdseed -mno-prfchw -mno-adx -mfxsr -mno-xsave -mno-xsaveopt -mno-avx512f -mno-avx512er -mno-avx512cd -mno-avx512pf -mno-prefetchwt1 -mno-clflushopt -mno-xsavec -mno-xsaves -mno-avx512dq -mno-avx512bw -mno-avx512vl -mno-avx512ifma -mno-avx512vbmi -mno-clwb -mno-pcommit -mno-mwaitx --param=l1-cache-size=32 --param=l1-cache-line-size=64 --param=l2-cache-size=3072 -mtune=westmere'
 
-LDFLAGS="-Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,--hash-style=gnu -Wl,-z,now"
+LDFLAGS='-Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,--hash-style=gnu -Wl,-z,now'
 
 #-j6
-#MAKEOPTS='-j6'
+#MAKEOPTS='-j3'
 #EXJOBS=1
 
 #PYTHON=/usr/i686-pc-linux-gnu/bin/python2.7
@@ -32,8 +36,8 @@ ICECC_VERSION='/opt/icecc-tc/x86_64.tar.gz=x86_64-pc-linux-gnu,/opt/icecc-tc/i68
 #ICE_CXXFLAGS=$ICE_CFLAGS
 
 #+LDFLAGS
-x86_64_pc_linux_gnu_CFLAGS="$NATIVE_SPECIFIC $COMMON $AGRESSIVE"
-#x86_64_pc_linux_gnu_CFLAGS="$NORMAL -march=westmere"
+x86_64_pc_linux_gnu_CFLAGS="${NATIVE_SPECIFIC} ${COMMON} ${AGRESSIVE}"
+#x86_64_pc_linux_gnu_CFLAGS="${NORMAL} -march=westmere"
 
 #x86_64_pc_linux_gnu_CFLAGS+=" -I/usr/i686-pc-linux-gnu/include/ -I/usr/x86_64-pc-linux-gnu/include/"
 x86_64_pc_linux_gnu_CXXFLAGS="$x86_64_pc_linux_gnu_CFLAGS"
