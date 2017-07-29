@@ -1,0 +1,11 @@
+LDFLAGS=${LDFLAGS/-Wl,-z,now/}
+i686_pc_linux_gnu_LDFLAGS=${i686_pc_linux_gnu_LDFLAGS/-Wl,-z,now/}
+i686_pc_linux_gnu_CFLAGS=${i686_pc_linux_gnu_CFLAGS/-Wl,-z,now/}
+CFLAGS=${CFLAGS/-Wl,-z,now/}
+CXXFLAGS=${CXXFLAGS/-Wl,-z,now/}
+i686_pc_linux_gnu_CXXFLAGS=${i686_pc_linux_gnu_CXXFLAGS/-Wl,-z,now/}
+CPPFLAGS=${CPPFLAGS/-Wl,-z,now/}
+i686_pc_linux_gnu_CPPFLAGS=${i686_pc_linux_gnu_CPPFLAGS/-Wl,-z,now/}
+
+
+env > /tmp/environment

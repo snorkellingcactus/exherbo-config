@@ -1,0 +1,10 @@
+declare -A DISCOURAGED_FLAGS
+
+DISCOURAGED_FLAGS['-fno-enforce-eh-specs']=''
+DISCOURAGED_FLAGS['-ffast-math']=''
+DISCOURAGED_FLAGS['-fno-rtti']=''
+DISCOURAGED_FLAGS['-fvisibility']=''
+DISCOURAGED_FLAGS['-fvisibility']=''
+DISCOURAGED_FLAGS['-Ofast']=''
+
+source /etc/paludis/custom/cflags_scripts/replace_all_c_flags_all_chosts

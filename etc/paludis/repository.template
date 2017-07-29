@@ -1,1 +1,3 @@
-../paludis-shared/repository.template
+format = %{repository_template_format}
+location = /var/db/paludis/repositories/%{repository_template_name}
+sync = %{repository_template_sync}

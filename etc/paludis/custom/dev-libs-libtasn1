@@ -1,0 +1,2 @@
+i686_pc_linux_gnu_CFLAGS="$i686_pc_linux_gnu_CFLAGS -Werror=array-bounds"
+i686_pc_linux_gnu_CXXFLAGS="$i686_pc_linux_gnu_CXXFLAGS -Werror=array-bounds"

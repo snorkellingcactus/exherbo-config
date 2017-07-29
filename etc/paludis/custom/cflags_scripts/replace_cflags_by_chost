@@ -1,0 +1,5 @@
+#!/bin/bash
+
+TMP_FLAGS_NAME="${VAR_CHOST}CFLAGS"
+
+. /etc/paludis/custom/cflags_scripts/replace_flags

@@ -1,1 +1,65 @@
-../paludis-shared/bashrc
+CHOST='i686-pc-linux-gnu'
+ARCH=''
+
+#Para LD: -Bsymbolic-functions, http://stackoverflow.com/questions/7216973/is-there-a-downside-to-using-bsymbolic-functions
+#EXHERBO_DEFAULT='-march=native -O2 -pipe -fomit-frame-pointer'
+#inline problems: -U_FORTIFY_SOURCE -fno-stack-protector
+#gobject-introspection: ac_cv_func_malloc_0_nonnull=yes
+#Revisar https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html#Optimize-Options
+COMMON=' -pipe'
+NORMAL="-O2 $COMMON -fomit-frame-pointer"
+#Agregar -flto, quitar fno-inline-functions
+# Brokes all ld tasks: -fvisibility=hidden
+# -Ofast=-ffast-math -fstack-arrays -fno-protect-parens
+# -flto
+AGRESSIVE='-Ofast -ffast-math -mfpmath=sse -fomit-frame-pointer -funroll-loops -fuse-linker-plugin'
+
+XGCC_NO_COMPILE="-mno-clflushopt -mno-xsavec -mno-xsaves -mno-avx512dq -mno-avx512bw -mno-avx512vl -mno-avx512ifma -mno-avx512vbmi -mno-clwb -mno-pcommit -mno-mwaitx"
+NATIVE_SPECIFIC="$XGCC_NO_COMPILE -march=pentium3 -m32 -mmmx -mno-3dnow -msse -mno-sse2 -mno-sse3 -mno-ssse3 -mno-sse4a -mno-cx16 -mno-sahf -mno-movbe -mno-aes -mno-sha -mno-pclmul -mno-popcnt -mno-abm -mno-lwp -mno-fma -mno-fma4 -mno-xop -mno-bmi -mno-bmi2 -mno-tbm -mno-avx -mno-avx2 -mno-sse4.2 -mno-sse4.1 -mno-lzcnt -mno-rtm -mno-hle -mno-rdrnd -mno-f16c -mno-fsgsbase -mno-rdseed -mno-prfchw -mno-adx -mfxsr -mno-xsave -mno-xsaveopt -mno-avx512f -mno-avx512er -mno-avx512cd -mno-avx512pf -mno-prefetchwt1 --param=l1-cache-size=16 --param=l1-cache-line-size=32 --param=l2-cache-size=256 -mtune=generic"
+
+#NATIVE_SPECIFIC=" -mmmx -mno-3dnow -msse -mno-sse2 -mno-sse3 -mno-ssse3 -mno-sse4a -mno-cx16 -mno-sahf -mno-movbe -mno-aes -mno-sha -mno-pclmul -mno-popcnt -mno-abm -mno-lwp -mno-fma -mno-fma4 -mno-xop -mno-bmi -mno-bmi2 -mno-tbm -mno-avx -mno-avx2 -mno-sse4.2 -mno-sse4.1 -mno-lzcnt -mno-rtm -mno-hle -mno-rdrnd -mno-f16c -mno-fsgsbase -mno-rdseed -mno-prfchw -mno-adx -mfxsr -mno-xsave -mno-xsaveopt -mno-avx512f -mno-avx512er -mno-avx512cd -mno-avx512pf -mno-prefetchwt1 -mno-clflushopt -mno-xsavec -mno-xsaves -mno-avx512dq -mno-avx512bw -mno-avx512vl -mno-avx512ifma -mno-avx512vbmi -mno-clwb -mno-pcommit -mno-mwaitx --param=l1-cache-size=16 --param=l1-cache-line-size=32 --param=l2-cache-size=256 -mtune=generic"
+
+LDFLAGS='-Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,--hash-style=gnu -Wl,-z,now'
+
+#-j2
+#MAKEOPTS='-j9'
+#EXJOBS=9
+
+#PYTHON=/usr/i686-pc-linux-gnu/bin/python2.7
+#PATH="/home/cactus/Documentos/Scripts:${PATH}"
+PATH="/usr/host/libexec/icecc/bin:${PATH}"
+
+#ICECC_DEBUG=debug
+ICECC_VERSION='/opt/icecc-tc/i686.tar.gz=i686-pc-linux-gnu'
+#ICECC_VERSION="$(cat /usr/local/share/icecream/ICECC_VERSION )"
+
+ICE_CFLAGS="-pipe -O2 -march=x86-64 -mtune=generic"
+ICE_CXXFLAGS=$ICE_CFLAGS
+
+#i686_pc_linux_gnu_CFLAGS=$ICE_CFLAGS
+#i686_pc_linux_gnu_CXXFLAGS=$ICE_CXXFLAGS
+
+i686_pc_linux_gnu_CFLAGS="$NATIVE_SPECIFIC $COMMON $AGRESSIVE ${LDFLAGS}"
+#i686_pc_linux_gnu_CFLAGS=$NORMAL
+
+i686_pc_linux_gnu_CXXFLAGS="$i686_pc_linux_gnu_CFLAGS"
+
+#-fuse-ld=gold
+#-Wl,-O1,--sort-common,--hash-style=gnu,--as-needed,-z,now -O2 -pipe -march=native -mtune=skylake -w -flto=8 -fuse-linker-plugin -ffat-lto-objects -fgrap$
+
+#Con CFLAGS parece alcanzar...
+#unset LDFLAGS
+#x86_64_pc_linux_gnu_LDFLAGS="$LDFLAGS"
+
+unset ICE_CFLAGS ICE_CXXFLAGS NATIVE_SPECIFIC COMMON AGRESSIVE NORMAL
+
+TMP="/etc/paludis/custom/${CATEGORY}-${PN}"
+
+if [ -f "$TMP" ] ; then
+    . $TMP
+fi
+
+unset TMP ICE_CFLAGS ICE_CXXFLAGS NATIVE_SPECIFIC COMMON AGRESSIVE EXHERBO_DEFAULT NORMAL
+
+#echo "i686_pc_linux_gnu_CFLAGS = \"$i686_pc_linux_gnu_CFLAGS\""
+#echo "i686_pc_linux_gnu_CXXFLAGS = \"$i686_pc_linux_gnu_CXXFLAGS\""

@@ -1,0 +1,13 @@
+VAR_CHOST=i686_pc_linux_gnu_
+
+. /etc/paludis/custom/cflags_scripts/replace_all_c_flags_by_chost
+
+VAR_CHOST=x86_64_pc_linux_gnu_
+
+. /etc/paludis/custom/cflags_scripts/replace_all_c_flags_by_chost
+
+VAR_CHOST=
+
+. /etc/paludis/custom/cflags_scripts/replace_all_c_flags_by_chost
+
+unset VAR_CHOST
