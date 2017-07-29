@@ -1,0 +1,29 @@
+#unset DISCOURAGED_FLAGS
+#declare -A DISCOURAGED_FLAGS
+
+#DISCOURAGED_FLAGS['-O3']='-O1'
+#DISCOURAGED_FLAGS['-O2']='-O1'
+#DISCOURAGED_FLAGS['-Ofast']='-O1'
+
+x86_64_pc_linux_gnu_CFLAGS="-O0 -march=westmere -pipe"
+x86_64_pc_linux_gnu_CXXFLAGS="$x86_64_pc_linux_gnu_CFLAGS"
+x86_64_pc_linux_gnu_CPPFLAGS="$x86_64_pc_linux_gnu_CFLAGS"
+
+i686_pc_linux_gnu_CFLAGS="$x86_64_pc_linux_gnu_CFLAGS"
+i686_pc_linux_gnu_CXXFLAGS="$x86_64_pc_linux_gnu_CFLAGS"
+i686_pc_linux_gnu_CPPFLAGS="$x86_64_pc_linux_gnu_CFLAGS"
+
+x86_64_pc_linux_musl_CFLAGS="$x86_64_pc_linux_gnu_CFLAGS"
+x86_64_pc_linux_musl_CXXFLAGS="$x86_64_pc_linux_gnu_CFLAGS"
+x86_64_pc_linux_musl_CPPFLAGS="$x86_64_pc_linux_gnu_CFLAGS"
+
+i686_pc_linux_musl_CFLAGS="$x86_64_pc_linux_gnu_CFLAGS"
+i686_pc_linux_musl_CXXFLAGS="$x86_64_pc_linux_gnu_CFLAGS"
+i686_pc_linux_musl_CPPFLAGS="$x86_64_pc_linux_gnu_CFLAGS"
+
+
+CFLAGS="$x86_64_pc_linux_gnu_CFLAGS"
+CXXFLAGS="$x86_64_pc_linux_gnu_CFLAGS"
+CPPFLAGS="$x86_64_pc_linux_gnu_CFLAGS"
+
+#. /etc/paludis/custom/cflags_scripts/replace_all_c_flags_all_chosts

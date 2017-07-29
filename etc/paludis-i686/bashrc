@@ -1,1 +1,1 @@
-../paludis-shared/bashrc
+. /etc/paludis-shared/bashrc

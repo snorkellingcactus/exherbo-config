@@ -1,0 +1,59 @@
+CHOST='x86_64-pc-linux-gnu'
+ARCH=''
+#EXHERBO_DEFAULT='-march=native -O2 -pipe -fomit-frame-pointer'
+#inline problems: -U_FORTIFY_SOURCE -fno-stack-protector
+#gobject-introspection: ac_cv_func_malloc_0_nonnull=yes
+
+#Revisar https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html#Optimize-Options
+COMMON=' -pipe'
+NORMAL="-O2 $COMMON -fomit-frame-pointer"
+# Brokes all ld tasks: -fvisibility=hidden
+# -Ofast=-ffast-math -fstack-arrays -fno-protect-parens
+# -flto
+AGRESSIVE='-Ofast -ffast-math -fomit-frame-pointer -funroll-loops -fuse-linker-plugin'
+NATIVE_SPECIFIC='-march=westmere -mmmx -mno-3dnow -msse -msse2 -msse3 -mssse3 -mno-sse4a -mcx16 -msahf -mno-movbe -mno-aes -mno-sha -mno-pclmul -mpopcnt -mno-abm -mno-lwp -mno-fma -mno-fma4 -mno-xop -mno-bmi -mno-bmi2 -mno-tbm -mno-avx -mno-avx2 -mno-sse4 -mno-sse4.2 -mno-sse4.1 -mno-lzcnt -mno-rtm -mno-hle -mno-rdrnd -mno-f16c -mno-fsgsbase -mno-rdseed -mno-prfchw -mno-adx -mfxsr -mno-xsave -mno-xsaveopt -mno-avx512f -mno-avx512er -mno-avx512cd -mno-avx512pf -mno-prefetchwt1 -mno-clflushopt -mno-xsavec -mno-xsaves -mno-avx512dq -mno-avx512bw -mno-avx512vl -mno-avx512ifma -mno-avx512vbmi -mno-clwb -mno-pcommit -mno-mwaitx --param=l1-cache-size=32 --param=l1-cache-line-size=64 --param=l2-cache-size=3072 -mtune=westmere'
+
+LDFLAGS="-Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,--hash-style=gnu,-z,now"
+
+#-j6
+MAKEOPTS='-j3'
+#EXJOBS=1
+
+#PYTHON=/usr/i686-pc-linux-gnu/bin/python2.7
+
+#PATH="/usr/host/libexec/icecc/bin:${PATH}"
+
+#ICECC_DEBUG=debug
+ICECC_VERSION='/opt/icecc-tc/x86_64.tar.gz=x86_64-pc-linux-gnu,/opt/icecc-tc/i686.tar.gz=i686-pc-linux-gnu'
+#ICECC_VERSION="$(cat /usr/local/share/icecream/ICECC_VERSION )"
+
+#ICE_CFLAGS="-pipe -O2 -march=x86-64 -mtune=generic"
+#ICE_CXXFLAGS=$ICE_CFLAGS
+
+#+LDFLAGS
+x86_64_pc_linux_gnu_CFLAGS="$NATIVE_SPECIFIC $COMMON $AGRESSIVE"
+
+#x86_64_pc_linux_gnu_CFLAGS+=" -I/usr/i686-pc-linux-gnu/include/ -I/usr/x86_64-pc-linux-gnu/include/"
+x86_64_pc_linux_gnu_CXXFLAGS="$x86_64_pc_linux_gnu_CFLAGS"
+
+i686_pc_linux_gnu_CFLAGS="$x86_64_pc_linux_gnu_CFLAGS"
+i686_pc_linux_gnu_CXXFLAGS="$x86_64_pc_linux_gnu_CXXFLAGS"
+
+#-fuse-ld=gold
+#-Wl,-O1,--sort-common,--hash-style=gnu,--as-needed,-z,now -O2 -pipe -march=native -mtune=skylake -w -flto=8 -fuse-linker-plugin -ffat-lto-objects -fgrap$
+
+#Con CFLAGS parece alcanzar...
+#unset LDFLAGS
+#x86_64_pc_linux_gnu_LDFLAGS="$LDFLAGS"
+
+unset ICE_CFLAGS ICE_CXXFLAGS NATIVE_SPECIFIC COMMON AGRESSIVE NORMAL
+
+TMP="/etc/paludis/custom/${CATEGORY}-${PN}"
+if [ -f "$TMP" ] ; then
+    . $TMP
+fi
+
+unset TMP
+
+
+#CAVE_RESOLVE_CMDLINE_make
