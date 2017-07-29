@@ -1,0 +1,11 @@
+unset DISCOURAGED_FLAGS
+declare -A DISCOURAGED_FLAGS
+
+DISCOURAGED_FLAGS['-ffast-math']=''
+DISCOURAGED_FLAGS['-Ofast']='-O0'
+DISCOURAGED_FLAGS['-O3']='-O0'
+DISCOURAGED_FLAGS['-O2']='-O0'
+DISCOURAGED_FLAGS['-O1']='-O0'
+
+. /etc/paludis/custom/cflags_scripts/replace_all_c_flags_all_chosts
+
