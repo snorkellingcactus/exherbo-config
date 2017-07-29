@@ -1,0 +1,3 @@
+#LDFLAGS="${LDFLAGS/,-z,now/}"
+#LDFLAGS="${LDFLAGS/-Wl,--as-needed/}"
+LDFLAGS=''

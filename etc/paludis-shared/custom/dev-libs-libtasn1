@@ -1,2 +1,2 @@
-x86_64_pc_linux_gnu_CFLAGS="-O2 -pipe "
-x86_64_pc_linux_gnu_CXXFLAGS="-O2 -pipe "
+x86_64_pc_linux_gnu_CFLAGS="-O2 -pipe -march=amdfam10"
+x86_64_pc_linux_gnu_CXXFLAGS="-O2 -pipe -march=amdfam10"
