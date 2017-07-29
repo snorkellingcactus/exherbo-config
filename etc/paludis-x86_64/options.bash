@@ -25,11 +25,6 @@ net-im/folks telepathy
 #megasync
 x11-libs/qt:4 dbus
 
-#Para minitube
-#qtscript
-media-libs/phonon qt5 pulseaudio gstreamer
-x11-libs/qtbase:5 glib gtk
-
 #Para vinagre. Buscar visor de escritorio qt.
 #gnome-desktop/vinagre ssh
 net-dns/avahi qt4
@@ -82,8 +77,6 @@ x11-libs/wxGTK:2.8::desktop tiff
 #gnome-desktop/gtksourceview gobject-introspection glade
 #dev-util/glade python gobject-introspection
 
-net-p2p/transmission qt5
-
 #Prueba para automontar dispositivos en pcmanfm:
 gnome-desktop/gvfs udisks
 
@@ -111,10 +104,6 @@ gnome-desktop/gsettings-desktop-schemas gobject-introspection
 x11-libs/gdk-pixbuf::i686-pc-linux-gnu -gobject-introspection
 
 
-#Para sayonara player
-x11-libs/qtbase:5 sqlite pulseaudio sql
-media-plugins/gst-plugins-bad GSTREAMER_PLUGINS: soundtouch
-
 #*/* PYTHON_ABIS: 3.5
 
 sys-apps/lshw gtk
@@ -122,10 +111,6 @@ sys-apps/lshw gtk
 sys-apps/paludis search-index xml
 
 #dev-libs/libclc[~scm]
-
-#DOSBOX:
-media-libs/SDL:0 dga pulseaudio
-media-libs/SDL:2 pulseaudio
 
 media-sound/deadbeef pulseaudio gtk aac flac
 x11-apps/volumeicon alsa
@@ -144,7 +129,6 @@ x11-plugins/cairo-dock-plugins::cactus dbusmenu disks exif force-icon-in-menus g
 x11-apps/compton opengl
 #+staging +gtk3 +vaapi
 #app-emulation/wine gtk3 multibuild_c: 32
-media-gfx/gimp exif mng postcript svg tiff wmf
 
 #11-03-2016: Por problema circular con jsonpp
 #Esto hace que use algo de un jsoncpp "interno"
@@ -155,26 +139,11 @@ media-gfx/gimp exif mng postcript svg tiff wmf
 dev-lang/llvm static
 media-plugins/gst-plugins-bad GSTREAMER_PLUGINS: opengl
 
-#para minitube
-media-plugins/gst-plugins-good gstreamer_plugins: soup
-
-#Para poder usar resize2fs junto a lvreduce:
-sys-fs/lvm2 fsadm
-
 #media-libs/mesa -* video_cards_i915 abi_x86_64
-
-#Para tint2gui:
-x11-misc/tint2 gtk
 
 # Para libreoffice:
 app-office/libreoffice gtk pdfimport python_abis: 3.5
 x11-libs/harfbuzz graphite
-
-#Para pcmanfm:
-x11-apps/pcmanfm gtk
-#x11-libs/libfm extra-only
-x11-libs/libfm gtk udisks exif
-media-libs/tiff opengl
 
 #Para vivaldi-snapshot:
 app-text/poppler cairo glib
@@ -183,26 +152,20 @@ net-www/vivaldi-snapshot system-ffmpeg system-gl linguas: es-419 es_MX es_PE en
 #para nm-applet
 #net-apps/NetworkManager wifi
 #net-misc/wicd gtk
-net-wireless/wpa_supplicant nl80211
 #net-apps/NetworkManager connection-check ppp
 net-apps/NetworkManager compat-libs providers: nss
-net-dns/dnsmasq dbus
 
 net-plugins/lightspark nsplugin tightspark pulseaudio
 
 gnome-desktop/file-roller archive
 
-media-libs/libsndfile flac
 dev-libs/llibcdio cddb vcdinfo
-media/ffmpeg mp2 pulseaudio cd h264 hevc opengl postproc
 media-sound/jack-audio-connection-kit alsa
 
 #Para cadence
->media-sound/jack-audio-connection-kit-0.125.0 dbus
 dev-python/pyatspi python_abis: 3.3
 #dev-libs/libxml2 PYTHON_ABIS: -2.7 3.3
 app-crypt/qca:2 qt4
-x11-libs/dbusmenu-qt qt4
 
 media-sound/pulseaudio webrtc-aec gtk equalizer -oss caps
 media-libs/libcanberra pulseaudio 
@@ -211,12 +174,6 @@ media-libs/libcanberra pulseaudio
 media-plugins/gst-libav system-ffmpeg
 
 media/libav h264 hevc cd amd64_cpu_features: ssse3
-x11-libs/qt:4 gtk glib
-
-#Habilitar lua para las extensiones y gnutls para urls de por ej. youtube.
-media/vlc  a52 aac ass cddb dirac dvd flac gstreamer h264 hevc id3 live matroska mp2 mpc mpeg2 opus taglib va vcdinfo qt5 lua gnutls pulseaudio
-#No anda, busca muy extrañamente /usr/x86_64-pc-linux-gnu/lib/libjack.la
-#media/vlc -jack
 
 #Temporal, para wine ::i686-pc-linux-gnu
 #sys-apps/dbus -systemd
@@ -230,7 +187,6 @@ net-libs/webkit gtk media opengl
 net-www/firefox pgo pulseaudio gstreamer -oss libproxy eme
 #net-www/firefox providers: -gtk3 gtk2
 net-www/firefox build_options: work=preserve
-dev-lang/python sqlite
 
 #Para eviacam:
 media-libs/opencv gtk v4l
@@ -255,45 +211,22 @@ xfce-base/xfce4-settings libinput sound-settings keyboard-layout cursor-themes
 
 #Requerido por el flag speex
  media-sound/vorbis-tools -speex
- 
- media-gfx/sane-backends usb
- 
- xfce-base/libxfce4ui gtk3
 
 media-libs/libwebp X86_CPU_FEATURES: sse2
 
 media-sound/jack_capture gtk
-media-sound/rakarrack jacksession
 
 app-shells/dash
 
 games-fps/dhewm3 curl core base sdl2
 games-fps/dhewm3 build_options: work=preserve
 
-#cadence:
-media-sound/cadence  python_abis: 3.3
-x11-libs/qt:4 qt3support
-
 gnome-desktop/gnome-media gstreamer-properties
-
-#Fails with more jobs.
-media-sound/sayonara ugly mtp build_options: jobs=1
 
 lxde-desktop/lxpolkit gtk3
 app-text/poedit providers: -gtk2 gtk3
 x11-libs/wxGTK:3.0 providers: gtk2 gtk3
 net-libs/webkit	providers: -gtk2 gtk3
-xfce-base/exo gtk3
-
-
-media-sound/fmodapi development libraries
-games-fps/zandronum gl server client gtk  sound asm build_options: jobs=1
-
-
-#Para DVDStyler:
-media-libs/libmng lcms
-x11-libs/wxGTK gstreamer
-app-cdr/DVDStyler wx-3.0-gtk2
 
 app-misc/rainlendar pro
 
@@ -309,9 +242,6 @@ dev-libs/keybinder python
 
 sys-devel/gdb guile
 
-#simple-scan:
-dev-libs/libgusb vapi gobject-introspection
-
 #mjpegtools, no compila:
 media-video/mjpegtools -quicktime
 
@@ -319,14 +249,9 @@ media-video/mjpegtools -quicktime
 #go
 #dev-lang/go bootstrap
 
-net-ftp/filezilla providers: -gtk3 gtk2
 sys-libs/glibc multiarch
 
 media-sound/a2jmidid build_options: jobs=1
-
-#para cadence
-dev-python/PyQt4 dbus python_abis: 3.3
-dev-python/sip python_abis: 3.3
 
 # dbus requiere jack2.
 media-sound/qjackctl dbus
@@ -339,7 +264,6 @@ sci-physics/bullet bullet3 extras
 
 
 games-sports/q3rally engine server data smp fb
-games-fps/smokinguns engine server data smp fb
 net-www/links gpm
 
 <=dev-lang/php-7 libphp5.so libphp5.a php_extensions: gd xml ftp curl ssl 
@@ -348,11 +272,6 @@ net-www/links gpm
 
 #app-text/cherrytree build_options: work=preserve
 #app-cdr/DVDStyler build_options: work=preserve
-
-
-#acetoneiso:
-x11-libs/qt:4 phonon webkit
-media-libs/phonon qt4
 
 dev-perl/Tk build_options: jobs=1
 
@@ -376,20 +295,10 @@ sys-apps/coreutils xattr
 games-strategy/spring ai default sound streflop threaded
 games-strategy/springlobby sound gstreamer notifications
 
-#x11-libs/wxSVG wx-3.0-gtk2 providers: ffmpeg
-x11-libs/wxSVG wx-3.0-gtk2
-
-www-plugins/pipelight gnome build_options: jobs=1
-media-video/handbrake gtk3
-
 games-strategy/0ad lobby
 
-media/dvdauthor providers: imagemagick
 
 # dev-util/itstool python_abis: -2.7 3.3
-
-lxqt/lxqt-panel pulseaudio
-sys-auth/polkit-qt qt5
 
 # Para PeaZip:
 dev-lang/fpc source
@@ -403,8 +312,6 @@ dev-python/appdirs python_abis: 3.4
 dev-python/packaging python_abis: 3.4
 dev-python/six python_abis: 3.4
 dev-python/pyparsing python_abis: 3.4
-
-sys-auth/polkit-qt qt5
 
 games-fps/iortcw engine data linguas: espanol
 
