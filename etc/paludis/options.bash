@@ -397,7 +397,7 @@ dev-lang/fpc source
 dev-lang/lazarus nogui
 app-arch/peazip qt4
 
-lxqt/lxqt-l10n compton-conf libfm-qt liblxqt lximage-qt lxqt-about lxqt-admin lxqt-config lxqt-globalkeys lxqt-notificationd lxqt-panel lxqt-policykit lxqt-powermanagement lxqt-runner lxqt-session lxqt-sudo obconf-qt lxqt-openssh-askpass pavucontrol-qt pcmanfm-qt qterminal build_options: recommended_tests
+lxqt/lxqt-l10n libfm-qt liblxqt lxqt-about lxqt-config lxqt-powermanagement lxqt-runner lxqt-session compton-conf libfm-qt liblxqt lximage-qt lxqt-about lxqt-admin lxqt-config lxqt-globalkeys lxqt-notificationd lxqt-panel lxqt-policykit lxqt-powermanagement lxqt-runner lxqt-session lxqt-sudo obconf-qt lxqt-openssh-askpass pavucontrol-qt pcmanfm-qt qterminal build_options: recommended_tests
 
 dev-python/appdirs python_abis: 3.4
 dev-python/packaging python_abis: 3.4
@@ -417,5 +417,27 @@ media-libs/libass fontconfig
 games-fps/doomsday doom fluidsynth openal resources snowberry tools
 
 games-emulation/mupen64plus-core asm
+
+app-emulation/dosbox-glide glide alsa
+
+media-sound/qtractor lv2
+
+dev-python/pytest python_abis: 2.7 3.4
+dev-python/py python_abis: 2.7 3.4
+
+media-sound/sox dlna
+media-sound/darkice alsa
+
+media-sound/hydrogen lash ladspa lrdf pulseaudio rubberband shared
+
+dev-lang/node system-openssl
+
+# Para templ.co
+dev-db/postgresql postgresql_extensions: hstore
+dev-lang/ruby:2.3 readline
+
+# Prueba para ver si usa webkit:4.0
+net-www/midori webkit2
+
 '
 
