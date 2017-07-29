@@ -1,0 +1,50 @@
+LNG_URI="http://www.rainlendar.net/cms/index.php?option=com_rny_localization&id="
+LNG_IDS="ar:ar:327 ast_ES:ast:287
+	be_BY:be:305 bg_BG:bg:946 br:br:4 bs:bs:944
+	ca_ES:ca:991 chr:chr:311 cs_CZ:cs:1073 cv_RU:cv_RU:599
+	da_DK:da:986 de_AU:de_AU:997 de_DE:de:1063 de_DE2:de_DE2:929
+	el_GR:el:447 es_ES:es:1081 et_EE:et:1013 eu_ES:eu:451
+	fi_FI:fi:1071 fil:fil:507 fr_FR:fr:1069
+	ga_IE:ga:1088 gl_ES:gl:569 
+	he_IL:he:394 hi_IN:hi:813 hr_HR:hr:1043 hu_HU:hu:1053
+	id_ID:id:681 is_IS:is:636 it_IT:it:1008
+	ja_JP:ja:788
+	km:km:1027 ko_KR:ko:940
+	l33t:l33t:342 lt_LT:lt:1042 lv_LV:lv:956
+	mk_MK:mk:1011
+	nb_NO:nb_NO:1065 nn_NO:nn_NO:323 nl_NL:nl:1072
+	pl_PL:pl:1080 pt_PT:pt:1036 pt_BR:pt_BR:1091
+	ro_RO:ro:998 ru_RU:ru:960
+	sk_SK:sk:968 sl_SI:sl:819 sq_AL:sq:27 sr_SR:sr:1083 sv_SE:sv:1087
+	ta:ta:897 th_TH:th:1039 tr_TR:tr:1047
+	uk_UA:uk:981
+	vi_VN:vi:990
+	zh_CN:zh_CN:1082 zh_TW:zh_TW:1085
+	"
+
+MYOPTIONS='linguas:'
+for triplet in ${LNG_IDS} ; do
+	# 1::[ $lname -> rainlendar's name for a locale ]
+	# :2:[ $lingua -> gentoo's name for a locale    ]
+	# ::3[ $lcode -> file ID on rainlendar.net CMS  ]
+	lname="	$( cut -d: -f1 <<< ${triplet} )"
+	lingua="$( cut -d: -f2 <<< ${triplet} )"
+	lcode="	$( cut -d: -f3 <<< ${triplet} )"
+
+	# populate IUSE, DEPEND and SRC_URI accordingly
+	MYOPTIONS="${MYOPTIONS} ${lingua}"
+	DEPENDENCIES="${DEPENDENCIES}
+			linguas:${lingua}? ( app-arch/zip )
+	"
+    SRC_URI="${SRC_URI}
+             linguas:${lingua}? ( ${LNG_URI}${lcode} -> ${lname}.r2lang )"
+
+done
+
+
+echo "\$DEPENDENCIES:"
+echo "$DEPENDENCIES"
+echo "\$MYOPTIONS"
+echo "$MYOPTIONS"
+echo "\$DOWNLOADS"
+echo "$SRC_URI"

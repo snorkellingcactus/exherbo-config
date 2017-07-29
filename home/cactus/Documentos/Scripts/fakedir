@@ -1,0 +1,122 @@
+TEMP=/tmp/
+TGT=/usr/x86_64-pc-linux-gnu/
+
+buff_get()
+{
+	if [ "${BUFF_CURRENT}" = 'B' ]
+	then
+		echo "${BUFF_B}"
+	else
+		echo "${BUFF_A}"
+	fi
+}
+buff_set()
+{
+	#echo "On buff ${BUFF_CURRENT}"
+	if [ "${BUFF_CURRENT}" = 'B' ]
+	then
+		BUFF_B="${1}"
+	else
+		BUFF_A="${1}"
+	fi
+}
+buff_append()
+{
+	buff_set "$( buff_get )${1}"
+}
+buff_sw()
+{
+	if [ "${BUFF_COUNT}" = "2" ]
+	then
+
+		do_link
+
+		#echo "buff_clear"
+
+		BUFF_A=''
+		BUFF_B=''
+		BUFF_COUNT=0
+	fi
+	let BUFF_COUNT++
+
+	#echo "BUFF_COUNT is now ${BUFF_COUNT}"
+
+	if [ "${BUFF_CURRENT}" = 'A' ]
+	then
+		BUFF_CURRENT='B'
+	else
+		BUFF_CURRENT='A'
+
+		#echo "buff_clear"
+		BUFF_A=''
+		BUFF_B=''
+	fi
+
+	#echo "BUFF_CURRENT is now ${BUFF_CURRENT}"
+}
+
+do_link()
+{
+	BUFF_A="${BUFF_A#/}"
+
+	local DIR="${BUFF_A%$( basename "${BUFF_A}" )}"
+	DIR="${LZDIR}/${DIR%/}"
+
+	local FILE="${TEMP}${BUFF_A}"
+
+	#echo "DIR: ${DIR}"
+	
+
+	[ ! -d "${DIR}" ] && mkdir -p "${DIR}"
+
+	#echo "FILE: ${FILE}"
+	#echo "BUFF_B: ${BUFF_B}"
+
+	[ ! -e "${FILE}" ] && ln -s "${BUFF_B}" "${DIR}"
+}
+
+create()
+{
+	local LZDIR=${TEMP}/LZ
+
+	[ -d "${LZDIR}" ] && rm -r "${LZDIR}"
+
+    mkdir "${LZDIR}"
+
+    local BUFF_A BUFF_B BUFF_CURRENT BUFF_COUNT
+    buff_sw
+
+	for i in lpl dci ico sh bat cfg TXT msg lpi lpr lpk xpm lrs rc xml fpc rsj res o lfm txt pas pp ppu ppl inc
+	do
+		for i in $(
+			find ${TGT}share/lazarus/ -name "*.${i}" -type f -printf '%P;%p; '
+		)
+		do
+			#echo '+++++++++++++++++++++++++++++++++'
+			#echo "${i}!=" ; echo "${i/;}"
+			while [ "${i}" != "${i/;}" ]
+			do
+				#echo "buff_append $(echo ${i} | cut -d';' -f1)"
+				buff_append "$(echo ${i} | cut -d';' -f1)"
+				buff_sw
+
+				i=${i#*;}
+
+				#echo '.......................................'
+
+				#echo "${i}!=" ; echo "${i/;}"
+			done
+
+			#echo '+++++++++++++++++++++++++++++++++'
+
+			
+			if [ ! -z "${i}" ]
+			then
+				#echo "buff_append ${i}"
+				buff_append "${i} "
+			fi
+		done
+	done
+}
+
+create

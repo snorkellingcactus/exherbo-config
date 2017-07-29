@@ -1,0 +1,25 @@
+LINGUAS=" ar ast be bg br bs ca chr cs cv_RU da de_AU de de_DE2 el es et eu fi fil fr ga gl he hi hr hu id is it ja km ko l33t lt lv mk nb_NO nn_NO nl pl pt 
+pt_BR ro ru sk sl sq sr sv ta th tr uk vi zh_CN zh_TW "
+
+
+MYOPTIONS="$MYOPTIONS
+	linguas:"
+
+for lingua in ${LINGUAS} ; do
+
+	LINGUAS_LST="${LINGUAS_LST} ${lingua}"
+
+	MYOPTIONS="${MYOPTIONS} ${lingua}"
+	DEPENDENCIES="${DEPENDENCIES}
+			linguas:${lingua}? ( app-arch/zip )
+	"
+done
+
+
+#echo $LINGUAS_LST
+echo "\$DEPENDENCIES:"
+echo "$DEPENDENCIES"
+echo "\$MYOPTIONS"
+echo "$MYOPTIONS"
+#echo "\$DOWNLOADS"
+#echo "$SRC_URI"

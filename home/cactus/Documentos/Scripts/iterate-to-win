@@ -1,0 +1,33 @@
+#!/bin/sh
+
+FILE=/tmp/environment
+
+j=0
+#while read i
+#do
+#	let j++
+#done < ${FILE}
+#320
+while read i
+do
+	let j++
+	if [ "${i:0:1}" != '#' ]
+	then
+		echo
+		echo -e "\e[36m${j}\e[0m \e[32m${i}\e[0m"
+		echo
+		KEY="$(echo ${i} | cut -f1 -d=)"
+		VAL="${i#*=}"
+		if [ ! -z "${VAL}" ]
+		then
+			export "${KEY}"="${VAL}"
+		fi
+		#$CMD
+		echo ${PATH}
+		(make -C src/windows/winecheck/ clean && make) || BREAK=break
+
+		${BREAK}
+	fi
+done < ${FILE}
+
+echo "Bye !"

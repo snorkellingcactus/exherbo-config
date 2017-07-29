@@ -1,0 +1,8 @@
+unset DISCOURAGED_FLAGS
+declare -A DISCOURAGED_FLAGS
+
+LDFLAGS="${LDFLAGS/-Wl,-z,now/}"
+
+DISCOURAGED_FLAGS['-Wl,-z,now']=''
+
+. /etc/paludis/custom/cflags_scripts/replace_all_c_flags_all_chosts

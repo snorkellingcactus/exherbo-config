@@ -1,0 +1,6 @@
+unset DISCOURAGED_FLAGS
+declare -A DISCOURAGED_FLAGS
+
+DISCOURAGED_FLAGS['-fomit-frame-pointer']=''
+
+. /etc/paludis/custom/cflags_scripts/replace_all_c_flags_all_chosts

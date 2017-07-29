@@ -1,0 +1,9 @@
+unset DISCOURAGED_FLAGS
+declare -A DISCOURAGED_FLAGS
+
+
+# Otherwise test_buff breaks.
+DISCOURAGED_FLAGS['-Ofast']='-O2'
+DISCOURAGED_FLAGS['-ffast-math']=''
+
+. /etc/paludis/custom/cflags_scripts/replace_all_c_flags_all_chosts

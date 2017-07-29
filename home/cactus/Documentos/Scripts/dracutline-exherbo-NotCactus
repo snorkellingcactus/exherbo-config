@@ -1,0 +1,2 @@
+#!/bin/sh
+dracut -H --lvm --no-compress --omit bash --lz4 /boot/initramfs

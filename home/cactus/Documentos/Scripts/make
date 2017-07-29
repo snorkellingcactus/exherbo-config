@@ -1,0 +1,107 @@
+#!/bin/sh
+
+#TEMP_STOP=85
+TEMP_STOP=77
+TEMP_START=68
+
+temp() {
+	sensors | grep 'Core 0' | sed -e 's/.*: \+\([+-][0-9.]\+\)°C.*$/0\1/' |bc
+}
+function mylog_a()
+{
+	log "${1} sensors | grep 'Core 0' | sed -e 's/.*: \+\([+-][0-9.]\+\)°C.*$/0\1/' |bc"
+	log "${1} sensors:"
+	log "$(sensors)"
+	log "${1} sensors | grep 'Core 0::'"
+	log "$(sensors | grep 'Core 0')"
+}
+is_process_running()
+{
+	[ ! -z "$(ps -A | grep $pid)" ]
+}
+log()
+{
+	echo "${1}" >> /tmp/maketemp.log
+}
+stop_if_proc_finish() {
+
+	log "Temperatura actual: $TEMP"
+
+	if is_process_running $(cat ~/.make.pid)
+	then
+		log "Process Finished. Exiting"
+		rm ~/.make.pid
+		exit 0
+	fi
+
+	log "Process running"
+}
+#parent pid:
+#ps -o pid --no-headers --ppid
+send_signal_to_proc()
+{
+	if is_process_running $1
+	then
+		log "kill $2 $1"
+		kill $2 $1
+
+		for pid in $(ps -o pid --no-headers --ppid $1)
+		do
+			send_signal_to_proc $pid $2
+		done
+	fi
+}
+log "/usr/bin/make $@ &"
+
+/usr/bin/make $@ &
+
+pid=$!
+
+log "PID: $pid"
+
+echo $pid> ~/.make.pid
+
+log "Created ~/make.pid"
+
+while true; do
+	log "while: begin"
+	stop_if_proc_finish
+
+	send_signal_to_proc $pid -SIGCONT
+	log "Temperatura baja, trabajando..."
+	mylog_a
+	TEMP=$(temp)
+
+	log "Temperatura: $TEMP  (baja)"
+
+	log "$(echo "${TEMP}<${TEMP_STOP}" | bc)"
+	# keep waiting until temp is too hot
+	while [ "$(echo "${TEMP}<${TEMP_STOP}" | bc)" = '1' ]; do
+		sleep 3
+
+		log "while1: stop_if_proc_finish"
+		stop_if_proc_finish
+
+		mylog_a "while1"
+		TEMP=$(temp)
+	done
+
+	send_signal_to_proc $pid -SIGTSTP
+
+	log "Temperatura alta, esperando..."
+	log "Temperatura: $TEMP  (alta)"
+
+	log "$(echo "${TEMP}>${TEMP_START}" | bc)"
+	# now wait for it to cool down...
+	while [ "$(echo "${TEMP}>${TEMP_START}" | bc)" = '1' ]; do
+		sleep 3
+
+		log "while2: stop_if_proc_finish"
+		stop_if_proc_finish
+
+		mylog_a "while2"
+		TEMP=$(temp)
+	done
+
+	log "ok now, restarting..."
+done

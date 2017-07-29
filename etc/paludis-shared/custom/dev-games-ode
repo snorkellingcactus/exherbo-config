@@ -1,0 +1,6 @@
+#Required by maniadrive.
+
+x86_64_pc_linux_gnu_CFLAGS+=' -fPIC'
+x86_64_pc_linux_gnu_CXXFLAGS+=' -fPIC'
+i686_pc_linux_gnu_CFLAGS+=' -fPIC'
+i686_pc_linux_gnu_CXXFLAGS+=' -fPIC'

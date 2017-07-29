@@ -1,0 +1,14 @@
+#!/bin/bash
+
+EXEC_NAME=rainlendar2
+PID_FILE=/tmp/${EXEC_NAME}.pid
+
+if [ ! -f ${PID_FILE} ] || [ "$( ps -p $( cat ${PID_FILE} ) -o comm= )" != "${EXEC_NAME}" ]
+then
+	${EXEC_NAME} -e "Hotkey_Show_Windows()" &
+        echo $! > ${PID_FILE}
+else
+	${EXEC_NAME} -e "Hotkey_Toggle_Windows()" &
+fi
+
+exit 0

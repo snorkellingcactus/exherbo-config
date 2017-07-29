@@ -1,0 +1,125 @@
+#!/bin/bash
+set +o posix
+TEMP_STOP=71
+#TEMP_STOP=82
+TEMP_START=68
+PIDFILE=/tmp/cavetemp.pid
+GREP_LIST=( "Core 0" "Core 2" )
+
+temp() {
+	sensors | grep "${1}" | sed -e 's/.*: \+\([+-][0-9.]\+\)°C.*$/0\1/' |bc -q
+}
+temp_max()
+{
+	local MAX=0;
+
+	for i in "${!GREP_LIST[@]}"
+	do
+		local TTEMP="$( temp ${GREP_LIST[${i}]} )"
+
+		if [ "$( echo "${TEMP} > ${MAX}" | bc -q )" = '1' ]
+		then
+			log "MAX=${MAX}"
+			MAX="${TTEMP}"
+		fi
+
+		log "temp${TTEMP}a"
+                log "max${MAX}a"
+	done
+
+	echo "${MAX}" | bc -q
+}
+function mylog_a()
+{
+	log "${1} sensors | grep 'Core 0' | sed -e 's/.*: \+\([+-][0-9.]\+\)°C.*$/0\1/' |bc"
+	log "${1} sensors:"
+	log "$(sensors)"
+	log "${1} sensors | grep 'Core 0::'"
+	log "$(sensors | grep 'Core 0')"
+}
+is_process_running()
+{
+	[ ! -z "$(ps -A | grep $pid)" ]
+}
+log()
+{
+	echo "${1}" >> /tmp/maketemp.log
+}
+stop_if_proc_finish() {
+	if ! is_process_running "$(cat ${PIDFILE})"
+	then
+		log "Process Finished. Exiting"
+		rm "${PIDFILE}"
+		exit 0
+	fi
+}
+#parent pid:
+#ps -o pid --no-headers --ppid
+send_signal_to_proc()
+{
+	if is_process_running "${1}"
+	then
+		pids+="${1}"
+		kill "${2}" "${1}"
+
+		for p in $( ps -o pid --no-headers --ppid "${1}" )
+		do
+			pids+=" ${p}"
+			send_signal_to_proc "${p}" "${2}"
+		done
+	fi
+}
+resume_proc()
+{
+	for p in ${pids}
+	do
+		send_signal_to_proc "${p}" "-SIGCONT"
+	done
+
+	unset pids
+}
+
+#export PALUDIS_DO_NOTHING_SANDBOXY=1 
+cave $@ &
+
+pid=$!
+
+log "PID: $pid"
+
+echo "${pid}" > "${PIDFILE}"
+
+while true; do
+	stop_if_proc_finish
+
+	pids="${pid}"
+
+	resume_proc
+
+	TEMP="$( temp_max )"
+
+	log "TEMP: ${TEMP}"
+
+	log "Temperatura: ${TEMP}  (baja). Trabajando ..."
+
+	# keep waiting until temp is too hot
+	while [ "$(echo "${TEMP}<${TEMP_STOP}" | bc -q)" = '1' ]; do
+		sleep 3
+
+		stop_if_proc_finish
+
+		TEMP="$( temp_max )"
+	done
+
+	send_signal_to_proc "${pid}" "-SIGTSTP"
+
+	log "Temperatura: ${TEMP}  (alta). Esperando ..."
+
+	# now wait for it to cool down...
+	while [ "$(echo "${TEMP}>${TEMP_START}" | bc -q)" = '1' ]; do
+		sleep 3
+
+		stop_if_proc_finish
+
+		TEMP="$( temp_max )"
+	done
+done

@@ -1,0 +1,2 @@
+cave -E paludis:i686 resolve mesa -cxm x -n --uninstalls-may-break dev-libs/libpeas --uninstalls-may-break dev-python/dbus-python --uninstalls-may-break 
+gnome-desktop/vinagre --uninstalls-may-break x11-apps/gtk-theme-config --suggestions ignore -C i

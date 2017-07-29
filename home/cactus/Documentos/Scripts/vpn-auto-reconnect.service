@@ -1,0 +1,13 @@
+[Unit]
+Description=Wifi Auto Reconnect Script
+Wants=network.target
+Requires=NetworkManager.service
+After=NetworkManager.service
+Before=network.target
+
+[Service]
+ExecStart=/usr/local/bin/vpn-auto-reconnect.sh start
+ExecStop=/usr/local/bin/vpn-auto-reconnect.sh stop
+
+[Install]
+Alias=multi-user.target.wants/vpn-auto-reconnect.service

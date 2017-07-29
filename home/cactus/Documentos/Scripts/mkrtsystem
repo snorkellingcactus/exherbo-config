@@ -1,0 +1,80 @@
+#!/bin/sh
+
+./zswap
+
+sysctl -w vm.swappiness=10
+
+SYSCTL=/etc/sysctl.conf
+
+[ -f "${SYSCTL}" ] || ( echo "Error: No sysctl.conf found in ${SYSCTL}." && exit )
+
+function sysctl_get_property(){
+	grep -F "${1}" ${SYSCTL}
+}
+function sysctl_get_property_value(){
+	echo "$@" | cut -d= -f2
+}
+function escape()
+{
+	sed -e 's/\\/\\\\/g' -e 's/\//\\\//g'
+}
+function sysctl_replace()
+{
+	sed -i -e 's/'"$( echo ${1} | escape )"'/'"$( echo ${2} | escape )"'/' "${SYSCTL}"
+}
+function sysctl_add()
+{
+	echo "${1}" >> "${SYSCTL}"
+}
+
+function sysctl_apply_prop()
+{
+	echo "Checking for ${1} on ${SYSCTL}..."
+
+	PROP_LINE="$( sysctl_get_property ${1} )"
+
+	if [ ! -z "${PROP_LINE}" ]
+	then
+		VALUE="$( echo ${PROP_LINE} | cut -d= -f2 )"
+
+		echo 'Property exists in sysctl with value = '"${VALUE}"
+
+		if [ ${VALUE} -lt ${3} ]
+		then
+			echo "I will change ${VALUE} by ${3}."
+
+			sysctl_replace "${PROP_LINE}" "${1} = ${3}"
+		else
+			echo -e 'Ok!'
+		fi
+	else
+		echo 'Property does not exists. Adding...'
+		sysctl_add "${1} = ${3}"
+	fi
+
+	proc_apply_prop ${2} ${3}
+
+	echo -e "\n"
+}
+proc_apply_prop(){
+
+	local FILE="/proc/${1}"
+	local VALUE="$( cat ${FILE} )"
+
+	echo "Runtime value is ${VALUE}"
+
+	if [ -z "${VALUE}" ]
+	then
+		echo 'Something was wrong. I get an empty value...'
+	else
+		if [ ${VALUE} -lt ${2} ]
+		then
+			echo "I will change it to ${2}..."
+			echo "${2}" > "${FILE}"
+		fi
+	fi
+}
+
+sysctl_apply_prop "fs.inotify.max_user_watches" "sys/fs/inotify/max_user_watches" 524288
+sysctl_apply_prop "dev.hpet.max-user-freq" "sys/dev/hpet/max-user-freq" 3072
+#"/sys/class/rtc/rtc0/max_user_freq"

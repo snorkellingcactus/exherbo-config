@@ -1,0 +1,124 @@
+connection.id:                          WISP_6204
+connection.uuid:                        c723a916-1d08-44dc-9997-83afed74863c
+connection.interface-name:              --
+connection.type:                        802-11-wireless
+connection.autoconnect:                 yes
+connection.autoconnect-priority:        0
+connection.timestamp:                   1466477479
+connection.read-only:                   no
+connection.permissions:                 user:cactus
+connection.zone:                        --
+connection.master:                      --
+connection.slave-type:                  --
+connection.autoconnect-slaves:          -1 (default)
+connection.secondaries:                 
+connection.gateway-ping-timeout:        0
+connection.metered:                     desconocido
+802-11-wireless.ssid:                   WISP_6204
+802-11-wireless.mode:                   infrastructure
+802-11-wireless.band:                   --
+802-11-wireless.channel:                0
+802-11-wireless.bssid:                  --
+802-11-wireless.rate:                   0
+802-11-wireless.tx-power:               0
+802-11-wireless.mac-address:            94:44:44:38:EC:CB
+802-11-wireless.cloned-mac-address:     --
+802-11-wireless.mac-address-blacklist:  
+802-11-wireless.mtu:                    auto
+802-11-wireless.seen-bssids:            C4:E9:84:FE:FD:C2
+802-11-wireless.hidden:                 no
+802-11-wireless-security.key-mgmt:      wpa-psk
+802-11-wireless-security.wep-tx-keyidx: 0
+802-11-wireless-security.auth-alg:      open
+802-11-wireless-security.proto:         
+802-11-wireless-security.pairwise:      
+802-11-wireless-security.group:         
+802-11-wireless-security.leap-username: --
+802-11-wireless-security.wep-key0:      --
+802-11-wireless-security.wep-key1:      --
+802-11-wireless-security.wep-key2:      --
+802-11-wireless-security.wep-key3:      --
+802-11-wireless-security.wep-key-flags: 0 (none)
+802-11-wireless-security.wep-key-type:  0 (desconocido)
+802-11-wireless-security.psk:           14965500
+802-11-wireless-security.psk-flags:     0 (none)
+802-11-wireless-security.leap-password: --
+802-11-wireless-security.leap-password-flags:0 (none)
+ipv4.method:                            auto
+ipv4.dns:                               
+ipv4.dns-search:                        
+ipv4.addresses:                         
+ipv4.gateway:                           --
+ipv4.routes:                            
+ipv4.route-metric:                      -1
+ipv4.ignore-auto-routes:                no
+ipv4.ignore-auto-dns:                   no
+ipv4.dhcp-client-id:                    --
+ipv4.dhcp-send-hostname:                yes
+ipv4.dhcp-hostname:                     --
+ipv4.never-default:                     no
+ipv4.may-fail:                          yes
+ipv6.method:                            auto
+ipv6.dns:                               
+ipv6.dns-search:                        
+ipv6.addresses:                         
+ipv6.gateway:                           --
+ipv6.routes:                            
+ipv6.route-metric:                      -1
+ipv6.ignore-auto-routes:                no
+ipv6.ignore-auto-dns:                   no
+ipv6.never-default:                     no
+ipv6.may-fail:                          yes
+ipv6.ip6-privacy:                       -1 (desconocido)
+ipv6.dhcp-send-hostname:                yes
+ipv6.dhcp-hostname:                     --
+GENERAL.NOMBRE:                         WISP_6204
+GENERAL.UUID:                           c723a916-1d08-44dc-9997-83afed74863c
+GENERAL.DISPOSITIVOS:                   wlp0s7f2u2u2
+GENERAL.ESTADO:                         activada
+GENERAL.PREDETERMINADO:                 sí
+GENERAL.PREDETERMINADO6:                no
+GENERAL.VPN:                            no
+GENERAL.ZONA:                           --
+GENERAL.RUTA-DBUS:                      /org/freedesktop/NetworkManager/ActiveConnection/0
+GENERAL.CON-RUTA:                       /org/freedesktop/NetworkManager/Settings/2
+GENERAL.OBJETO SPEC:                    /org/freedesktop/NetworkManager/AccessPoint/0
+GENERAL.MASTER-RUTA:                    --
+IP4.DIRECCIÓN[1]:                       192.168.0.103/24
+IP4.PUERTA DE ENLACE:                   192.168.0.1
+IP4.DNS[1]:                             192.168.0.1
+DHCP4.OPCIÓN[1]:                        requested_subnet_mask = 1
+DHCP4.OPCIÓN[2]:                        requested_rfc3442_classless_static_routes = 1
+DHCP4.OPCIÓN[3]:                        requested_nds_context = 1
+DHCP4.OPCIÓN[4]:                        subnet_mask = 255.255.255.0
+DHCP4.OPCIÓN[5]:                        domain_name_servers = 192.168.0.1
+DHCP4.OPCIÓN[6]:                        ip_address = 192.168.0.103
+DHCP4.OPCIÓN[7]:                        requested_static_routes = 1
+DHCP4.OPCIÓN[8]:                        dhcp_server_identifier = 192.168.0.1
+DHCP4.OPCIÓN[9]:                        requested_nis_servers = 1
+DHCP4.OPCIÓN[10]:                       requested_nds_servers = 1
+DHCP4.OPCIÓN[11]:                       broadcast_address = 192.168.0.255
+DHCP4.OPCIÓN[12]:                       requested_interface_mtu = 1
+DHCP4.OPCIÓN[13]:                       requested_domain_name_servers = 1
+DHCP4.OPCIÓN[14]:                       dhcp_message_type = 5
+DHCP4.OPCIÓN[15]:                       requested_broadcast_address = 1
+DHCP4.OPCIÓN[16]:                       routers = 192.168.0.1
+DHCP4.OPCIÓN[17]:                       requested_nds_tree_name = 1
+DHCP4.OPCIÓN[18]:                       requested_domain_name = 1
+DHCP4.OPCIÓN[19]:                       requested_netbios_node_type = 1
+DHCP4.OPCIÓN[20]:                       requested_routers = 1
+DHCP4.OPCIÓN[21]:                       expiry = 2147483647
+DHCP4.OPCIÓN[22]:                       requested_wpad = 1
+DHCP4.OPCIÓN[23]:                       requested_netbios_scope = 1
+DHCP4.OPCIÓN[24]:                       requested_nis_domain = 1
+DHCP4.OPCIÓN[25]:                       requested_ms_classless_static_routes = 1
+DHCP4.OPCIÓN[26]:                       requested_netbios_dd_server = 1
+DHCP4.OPCIÓN[27]:                       requested_netbios_name_servers = 1
+DHCP4.OPCIÓN[28]:                       network_number = 192.168.0.0
+DHCP4.OPCIÓN[29]:                       requested_domain_search = 1
+DHCP4.OPCIÓN[30]:                       next_server = 0.0.0.0
+DHCP4.OPCIÓN[31]:                       requested_ntp_servers = 1
+DHCP4.OPCIÓN[32]:                       dhcp_lease_time = 4294967295
+DHCP4.OPCIÓN[33]:                       requested_host_name = 1
+IP6.DIRECCIÓN[1]:                       fe80::9644:44ff:fe38:eccb/64
+IP6.PUERTA DE ENLACE:                   
