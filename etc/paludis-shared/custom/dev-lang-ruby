@@ -5,7 +5,7 @@
 #DISCOURAGED_FLAGS['-O2']='-O1'
 #DISCOURAGED_FLAGS['-Ofast']='-O1'
 
-x86_64_pc_linux_gnu_CFLAGS="-O2 -pipe -march=pentium3 -m32"
+x86_64_pc_linux_gnu_CFLAGS="-O0 -march=pentium3 -m32 -pipe"
 x86_64_pc_linux_gnu_CXXFLAGS="$x86_64_pc_linux_gnu_CFLAGS"
 x86_64_pc_linux_gnu_CPPFLAGS="$x86_64_pc_linux_gnu_CFLAGS"
 

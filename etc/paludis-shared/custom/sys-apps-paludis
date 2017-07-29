@@ -1,11 +1,10 @@
-unset DISCOURAGED_FLAGS
 declare -A DISCOURAGED_FLAGS
 
-DISCOURAGED_FLAGS['-ffast-math']=''
-DISCOURAGED_FLAGS['-Ofast']='-O3'
-
 DISCOURAGED_FLAGS['-fno-enforce-eh-specs']=''
+DISCOURAGED_FLAGS['-ffast-math']=''
 DISCOURAGED_FLAGS['-fno-rtti']=''
 DISCOURAGED_FLAGS['-fvisibility']=''
+DISCOURAGED_FLAGS['-fvisibility']=''
+DISCOURAGED_FLAGS['-Ofast']=''
 
-. /etc/paludis/custom/cflags_scripts/replace_all_c_flags_all_chosts
+source /etc/paludis/custom/cflags_scripts/replace_all_c_flags_all_chosts

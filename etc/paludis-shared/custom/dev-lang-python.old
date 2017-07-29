@@ -1,0 +1,6 @@
+i686_pc_linux_gnu_CFLAGS=''
+i686_pc_linux_gnu_CXXFLAGS=''
+i686_pc_linux_gnu_CPPFLAGS=''
+CFLAGS=${i686_pc_linux_gnu_CFLAGS}
+CXXFLAGS=${i686_pc_linux_gnu_CXXFLAGS}
+CPPFLAGS=${i686_pc_linux_gnu_CPPFLAGS}

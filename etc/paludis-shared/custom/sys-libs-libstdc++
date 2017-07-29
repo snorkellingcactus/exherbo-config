@@ -1,0 +1,15 @@
+#declare -A DISCOURAGED_FLAGS
+
+#DISCOURAGED_FLAGS['-mno-clflushopt']=""
+#DISCOURAGED_FLAGS['-mno-xsavec']=""
+#DISCOURAGED_FLAGS["-mno-xsaves"]=""
+#DISCOURAGED_FLAGS["-mno-avx512dq"]=""
+#DISCOURAGED_FLAGS["-mno-avx512bw"]=""
+#DISCOURAGED_FLAGS["-mno-avx512vl"]=""
+#DISCOURAGED_FLAGS["-mno-avx512ifma"]=""
+#DISCOURAGED_FLAGS["-mno-avx512vbmi"]=""
+#DISCOURAGED_FLAGS["-mno-clwb"]=""
+#DISCOURAGED_FLAGS["-mno-pcommit"]=""
+#DISCOURAGED_FLAGS["-mno-mwaitx"]=""
+
+#source /etc/paludis/custom/cflags_scripts/replace_all_c_flags_all_chosts

@@ -1,0 +1,11 @@
+#i686_pc_linux_gnu_CFLAGS=${i686_pc_linux_gnu_CFLAGS/${LDFLAGS}}
+#CFLAGS=${CFLAGS/${LDFLAGS}}
+#i686_pc_linux_gnu_CXXFLAGS=${i686_pc_linux_gnu_CFLAGS/${LDFLAGS}}
+#CXXFLAGS=${CXXFLAGS/${LDFLAGS}}
+#i686_pc_linux_gnu_CPPFLAGS=${i686_pc_linux_gnu_CFLAGS/${LDFLAGS}}
+#CPPFLAGS=${CPPFLAGS/${LDFLAGS}}
+
+#unset LDFLAGS 
+
+
+#env > /tmp/env-${PNV}

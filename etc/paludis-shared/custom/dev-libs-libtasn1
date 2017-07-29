@@ -1,2 +1,2 @@
-x86_64_pc_linux_gnu_CFLAGS="-O2 -pipe "
-x86_64_pc_linux_gnu_CXXFLAGS="-O2 -pipe "
+i686_pc_linux_gnu_CFLAGS="$i686_pc_linux_gnu_CFLAGS -Werror=array-bounds"
+i686_pc_linux_gnu_CXXFLAGS="$i686_pc_linux_gnu_CXXFLAGS -Werror=array-bounds"

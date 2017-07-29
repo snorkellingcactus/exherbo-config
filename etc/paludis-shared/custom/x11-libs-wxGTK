@@ -1,0 +1,15 @@
+declare -A DISCOURAGED_FLAGS
+
+# TODO: What happens with -shared?
+
+# /usr/i686-pc-linux-gnu/lib/gcc/i686-pc-linux-gnu/5.4.0/../../../crt1.o: En la función `_start':
+# (.text+0x18): referencia a `main' sin definir
+unset LDFLAGS
+
+DISCOURAGED_FLAGS['-Wl,-O1']=''
+DISCOURAGED_FLAGS['-Wl,--sort-common']=''
+DISCOURAGED_FLAGS['-Wl,--as-needed']=''
+DISCOURAGED_FLAGS['-Wl,--hash-style=gnu']=''
+DISCOURAGED_FLAGS['-Wl,-z,now']=''
+
+source /etc/paludis/custom/cflags_scripts/replace_all_c_flags_all_chosts
