@@ -56,5 +56,6 @@ echo '
 	games-strategy/0ad testing
 	games-fps/ioquake3 scm
 
+	net-wireless/rtl8192se scm
 	<=x11-libs/qtwebkit-5.8.0-r1
 '

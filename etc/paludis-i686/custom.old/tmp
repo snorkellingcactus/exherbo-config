@@ -1,6 +1,0 @@
-if [ -f "$TMP" ] ; then
-
-   echo "Sourcing $TMP" >> /tmp/cflags_replace.log
-    source $TMP 2> /tmp/error.log
-fi
-

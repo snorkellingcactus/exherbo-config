@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo '
-	*/* build_options: symbols=strip jobs=3 LIBC: glibc -musl parts: -documentation
+	*/* -man build_options: symbols=strip jobs=3 LIBC: glibc -musl parts: -documentation
 	*/* targets: x86_64-pc-linux-gnu i686-pc-linux-gnu
 	*/* -systemd consolekit
         */* providers: -systemd eudev rsyslog consolekit

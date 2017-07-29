@@ -1,5 +1,0 @@
-TMP_FLAGS_NAME="${VAR_CHOST}CXXFLAGS"
-
-. /etc/paludis/custom/cflags_scripts/replace_flags
-
-unset TMP_FLAGS_NAME

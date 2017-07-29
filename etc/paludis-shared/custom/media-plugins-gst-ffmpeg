@@ -1,4 +1,1 @@
-x86_64_pc_linux_gnu_CFLAGS=''
-x86_64_pc_linux_gnu_CXXFLAGS=''
-x86_64_pc_linux_gnu_LDFLAGS=''
-LDFLAGS=''
+dev-libs-pugixml

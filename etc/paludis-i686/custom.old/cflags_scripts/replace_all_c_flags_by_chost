@@ -1,3 +1,0 @@
-. /etc/paludis/custom/cflags_scripts/replace_cflags_by_chost
-. /etc/paludis/custom/cflags_scripts/replace_cxxflags_by_chost
-. /etc/paludis/custom/cflags_scripts/replace_cppflags_by_chost

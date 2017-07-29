@@ -1,4 +1,0 @@
-unset x86_64_pc_linux_gnu_CFLAGS x86_64_pc_linux_gnu_CXXFLAGS x86_64_pc_linux_gnu_CPPFLAGS CFLAGS CXXFLAGS CPPFLAGS
-#x86_64_pc_linux_gnu_CFLAGS='-march=westmere'
-#x86_64_pc_linux_gnu_CFLAGS='-O0 -g'
-

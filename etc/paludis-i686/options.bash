@@ -14,4 +14,6 @@ echo '
 
 #	*/* -udev -systemd
 	x11-drivers/nvidia-drivers -* plat_x86
+	media-libs/SDL:2 opengl
+       games-sports/NFSIISE linguas: spanish
 '
