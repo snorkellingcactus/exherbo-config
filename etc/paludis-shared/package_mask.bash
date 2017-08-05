@@ -10,7 +10,7 @@ echo '
 	dev-util/kBuild::SuperHeron-misc
 
 	#No tiene staging.
-        >app-emulation/wine-2.10
+        >app-emulation/wine-2.13
 
 	#       Qjackctrl & cadeence no andan con jack2.
 #        >=media-sound/jack-audio-connection-kit-1.9.10
