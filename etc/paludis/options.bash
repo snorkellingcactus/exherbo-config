@@ -129,6 +129,7 @@ echo '
 	x11-misc/tint2 gtk
 
 	*/* jack vorbis theora vpx mikmod mod mp3 mp4 ogg speex  midi fluidsynth timidity faac aacplus cdio fuse realtime libsamplerate amr sndfile modplug
+	    # xvmc
 	*/* threads schroedinger libass smp wavpack musepack ffmpeg vcd lame pfd pdf quicktime -bluetooth scanner fbcon aalib directfb libcaca zeroconf
 	*/* device-mapper nls threads providers: jpeg-turbo -ijg-jpeg
 	*/* gstreamer_plugins: ogg cdda theora vorbis libvisual xv pango alsa flac jack pulseaudio taglib speex vpx wavpack musepack resin sndfile faac faad mpg123 cdio dvdread h264 lame mad mpeg2 mp2 mjpeg
@@ -461,4 +462,6 @@ echo '
 
 	# Enable google hangouts screen share.
 	x11-server/xorg-server record
+
+	#x11-drivers/nvidia-drivers multibuild_c: 64 32
 '
