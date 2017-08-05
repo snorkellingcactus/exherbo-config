@@ -5,4 +5,10 @@ LDFLAGS="${LDFLAGS/-Wl,-z,now/}"
 
 DISCOURAGED_FLAGS['-Wl,-z,now']=''
 
+# Test, for graphic corruption:
+#DISCOURAGED_FLAGS['-O3']='-O2'
+#DISCOURAGED_FLAGS['-Ofast']='-O2'
+#DISCOURAGED_FLAGS['-ffast-math']=''
+#DISCOURAGED_FLAGS['-funroll-loops']=''
+
 . /etc/paludis/custom/cflags_scripts/replace_all_c_flags_all_chosts
