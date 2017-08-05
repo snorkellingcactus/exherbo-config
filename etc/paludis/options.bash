@@ -7,7 +7,7 @@ echo '
 
 	sys-fs/sshfs-fuse python_abis: 3.6
 
-	net-misc/connman wifi wispr
+	net-misc/connman wifi
 
 	#Para DVDStyler:
 	media-libs/libmng lcms
@@ -26,7 +26,8 @@ echo '
 	media-libs/tiff opengl
 
 	games-fps/smokinguns data server engine smp fb
-	games-fps/zandronum gl server client gtk  sound asm build_options: jobs=1
+	games-fps/zandronum client gtk  sound asm
+
 	media-sound/fmodapi development libraries
 
 	#x11-libs/wxSVG wx-3.0-gtk2 providers: ffmpeg
@@ -71,7 +72,7 @@ echo '
 	media-sound/rakarrack jacksession
 
 	#Habilitar lua para las extensiones y gnutls para urls de por ej. youtube.
-	media/vlc  a52 aac ass cddb dirac dvd flac gstreamer h264 hevc id3 live matroska mp2 mpc mpeg2 opus taglib va vcdinfo qt5 lua gnutls pulseaudio
+	media/vlc  a52 aac ass cddb dirac dvd flac gstreamer h264 hevc id3 live matroska mp2 mpc mpeg2 opus taglib va vcdinfo qt5 lua gnutls pulseaudio ffmpeg
 	#No anda, busca muy extrañamente /usr/x86_64-pc-linux-gnu/lib/libjack.la
 	#media/vlc -jack
 
@@ -96,11 +97,80 @@ echo '
 	x11-libs/qtbase:5 sqlite pulseaudio sql
 	media-plugins/gst-plugins-bad GSTREAMER_PLUGINS: soundtouch
 	#Fails with more jobs.
-	media-sound/sayonara ugly mtp build_options: jobs=1
+	media-sound/sayonara ugly lame build_options: jobs=1
 
 	www-plugins/pipelight gnome build_options: jobs=1
 	net-dns/dnsmasq dbus
 
+	sys-devel/meson python_abis: -3.3 3.5
+
 	#Para tint2gui:
+	media-libs/imlib2 X
+	x11-libs/cairo X
 	x11-misc/tint2 gtk
+
+	#Para vinagre. Buscar visor de escritorio qt.
+	#gnome-desktop/vinagre ssh
+	net-dns/avahi gtk3
+	#dev-libs/gtk-vnc pulseaudio
+
+	#virtual/awk providers: mawk
+	sys-libs/ncurses development
+
+	#sys-boot/grub device-mapper
+	#unitec: filter gd
+	dev-lang/php pear fpm PHP_EXTENSIONS: filter gd imap xml pcre pdo-sqlite pdo-mysql mysqli  pdo-odbc unixodbc
+
+	dev-db/mysql memcached
+	#dev-lang/python build_options: jobs=4
+
+	#openbox
+	x11-libs/pango X
+
+	#Para pcmanfm:
+	x11-apps/pcmanfm gtk
+	#x11-libs/libfm extra-only
+	x11-libs/libfm gtk udisks exif
+	media-libs/tiff opengl
+
+	# Para lxpanel:
+	x11-libs/gdk-pixbuf X
+
+
+	net-dns/dnsmasq idn nls
+	sys-fs/xfsprogs build_options: work=preserve
+	media-sound/pulseaudio webrtc-aec gtk equalizer -oss caps jack
+	media-libs/libsndfile vorbis
+	x11-libs/libxkbcommon X
+	x11-libs/qt:4 kde dbus opengl
+	dev-lang/php:5.3::cactus libphp5.so PHP_EXTENSIONS: curl ftp ssl
+	media-libs/SDL:2 opengl
+	media-libs/SDL_mixer mad
+	x11-drivers/xf86-video-trident xaa
+	media-plugins/gst-plugins-bad opengl
+	#dev-libs/libcdio cddb vcdinfo
+
+	dev-python/dbus-python        PYTHON_ABIS: 2.7 3.3
+	dev-lang/python sqlite
+	x11-libs/libva opengl
+	dev-libs/atk gobject-introspection
+	x11-libs/gdk-pixbuf gobject-introspection
+	x11-libs/pango gobject-introspection
+	x11-libs/gtk+ gobject-introspection
+	x11-libs/wxGTK tiff
+	dev-libs/gtk-vnc pulseaudio
+	gnome-desktop/vinagre ssh
+	net-dns/avahi gtk3
+	net-libs/webkit media providers: gtk2
+	app-text/poedit providers: gtk2 -gtk3
+	#x11-libs/wxGTK:3.0 providers: gtk2 -gtk3
+	media-sound/audacity ffmpeg flac id3tag jack midi mp2 mp3 soundtouch vorbis
+	
+	net-www/links gpm
+
+	app-cdr/libisofs xattr
+	app-cdr/libburn cdio
+
+	# netmap ¿should not be nmap?
+	app-virtualization/qemu async gtk2 jemalloc opengl pulseaudio sdl2 x86 xattr usb-passthrough
 '
