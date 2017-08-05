@@ -7,7 +7,7 @@
 
 LDFLAGS="${LDFLAGS/-Wl,-z,now/}"
 
-x86_64_pc_linux_gnu_CFLAGS="-O2 -march=westmere -pipe"
+x86_64_pc_linux_gnu_CFLAGS="-O2  -pipe"
 x86_64_pc_linux_gnu_CXXFLAGS="$x86_64_pc_linux_gnu_CFLAGS"
 x86_64_pc_linux_gnu_CPPFLAGS="$x86_64_pc_linux_gnu_CFLAGS"
 
