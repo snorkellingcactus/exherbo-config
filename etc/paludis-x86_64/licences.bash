@@ -1,1 +1,0 @@
-../paludis-shared/licences.bash
