@@ -443,4 +443,7 @@ echo '
 
 	# Prueba para ver si usa webkit:4.0
 	net-www/midori webkit2
+
+	# Enable google hangouts screen share.
+	+x11-server/xorg-server record
 '
