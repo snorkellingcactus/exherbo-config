@@ -3,6 +3,10 @@
 /etc/paludis-shared/options.bash
 
 echo '
+	sys-fs/fuse python_abis: 3.6
+
+	sys-fs/sshfs-fuse python_abis: 3.6
+
 	net-misc/connman wifi wispr
 
 	#Para DVDStyler:
