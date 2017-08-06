@@ -10,14 +10,10 @@ echo '
 	dev-util/kBuild::SuperHeron-misc
 
 	#No tiene staging.
-<<<<<<< HEAD
         >app-emulation/wine-2.19
 
 	# Wine fails to compile and causes strange font rendering on webkit.
 	=media-libs/freetype-2.8.1
-=======
-        >app-emulation/wine-2.10
->>>>>>> Apply losed NotCactus.local specifics from rebasing.
 
 	#       Qjackctrl & cadeence no andan con jack2.
 #        >=media-sound/jack-audio-connection-kit-1.9.10
