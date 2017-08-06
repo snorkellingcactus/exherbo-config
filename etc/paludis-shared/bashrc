@@ -1,4 +1,4 @@
-CHOST=''
+CHOST='x86_64-pc-linux-gnu'
 ARCH=''
 
 #Para LD: -Bsymbolic-functions, http://stackoverflow.com/questions/7216973/is-there-a-downside-to-using-bsymbolic-functions
@@ -15,12 +15,12 @@ NORMAL="-O2 $COMMON -fomit-frame-pointer"
 # -flto
 AGRESSIVE='-Ofast -ffast-math -fomit-frame-pointer -funroll-loops -fuse-linker-plugin'
 XGCC_NO_COMPILE="-mno-clflushopt -mno-xsavec -mno-xsaves -mno-avx512dq -mno-avx512bw -mno-avx512vl -mno-avx512ifma -mno-avx512vbmi -mno-clwb -mno-pcommit -mno-mwaitx"
-NATIVE_SPECIFIC='-mmmx -msse -msse2 -msse3 -mcx16 -msahf -mno-movbe -mno-aes -mno-sha -mno-pclmul -mno-lwp -mno-fma -mno-fma4 -mno-xop -mno-bmi -mno-bmi2 -mno-tbm -mno-avx -mno-avx2 -mno-sse4.2 -mno-sse4.1 -mno-rtm -mno-hle -mno-rdrnd -mno-f16c -mno-fsgsbase -mno-rdseed -mno-adx -mfxsr -mno-xsave -mno-xsaveopt -mno-avx512f -mno-avx512er -mno-avx512cd -mno-avx512pf -mno-prefetchwt1 --param=l1-cache-line-size='
+NATIVE_SPECIFIC='-mmmx -msse -msse2 -msse3 -mcx16 -msahf -mno-movbe -mno-aes -mno-sha -mno-pclmul -mpopcnt -mno-lwp -mno-fma -mno-fma4 -mno-xop -mno-bmi -mno-bmi2 -mno-tbm -mno-avx -mno-avx2 -mno-sse4.2 -mno-sse4.1 -mno-rtm -mno-hle -mno-rdrnd -mno-f16c -mno-fsgsbase -mno-rdseed -mno-adx -mfxsr -mno-xsave -mno-xsaveopt -mno-avx512f -mno-avx512er -mno-avx512cd -mno-avx512pf -mno-prefetchwt1 --param=l1-cache-line-size=64'
 
 LDFLAGS='-Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,--hash-style=gnu -Wl,-z,now'
 
-#-j
-#MAKEOPTS='-j'
+#-j6
+#MAKEOPTS='-j3'
 #EXJOBS=1
 
 #PYTHON=/usr/i686-pc-linux-gnu/bin/python2.7
@@ -29,14 +29,21 @@ LDFLAGS='-Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,--hash-style=gnu -Wl,-z,n
 PATH="/usr/host/libexec/icecc/bin:${PATH}"
 
 #ICECC_DEBUG=debug
-ICECC_VERSION='/opt/icecc-tc/i686.tar.gz=i686-pc-linux-gnu'
+ICECC_VERSION='/opt/icecc-tc/x86_64.tar.gz=x86_64-pc-linux-gnu,/opt/icecc-tc/i686.tar.gz=i686-pc-linux-gnu'
 #ICECC_VERSION="$(cat /usr/local/share/icecream/ICECC_VERSION )"
 
-#ICE_CFLAGS="-pipe -O2 -mtune=generic"
+#ICE_CFLAGS="-pipe -O2 -march=x86-64 -mtune=generic"
 #ICE_CXXFLAGS=$ICE_CFLAGS
 
-i686_pc_linux_gnu_CFLAGS=""
-i686_pc_linux_gnu_CXXFLAGS=""
+#+LDFLAGS
+x86_64_pc_linux_gnu_CFLAGS="${NATIVE_SPECIFIC} ${COMMON} ${AGRESSIVE}"
+#x86_64_pc_linux_gnu_CFLAGS="${NORMAL} "
+
+#x86_64_pc_linux_gnu_CFLAGS+=" -I/usr/i686-pc-linux-gnu/include/ -I/usr/x86_64-pc-linux-gnu/include/"
+x86_64_pc_linux_gnu_CXXFLAGS="$x86_64_pc_linux_gnu_CFLAGS"
+
+i686_pc_linux_gnu_CFLAGS="$x86_64_pc_linux_gnu_CFLAGS"
+i686_pc_linux_gnu_CXXFLAGS="$x86_64_pc_linux_gnu_CXXFLAGS"
 
 #-fuse-ld=gold
 #-Wl,-O1,--sort-common,--hash-style=gnu,--as-needed,-z,now -O2 -pipe -march=native -mtune=skylake -w -flto=8 -fuse-linker-plugin -ffat-lto-objects -fgrap$
@@ -52,6 +59,7 @@ if [ -f "$TMP" ] ; then
     . $TMP
 fi
 
-unset TMP ICE_CFLAGS ICE_CXXFLAGS NATIVE_SPECIFIC COMMON AGRESSIVE EXHERBO_DEFAULT NORMAL
+unset TMP
 
 
+#CAVE_RESOLVE_CMDLINE_make
