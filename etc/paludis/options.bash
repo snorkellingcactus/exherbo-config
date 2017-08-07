@@ -3,6 +3,8 @@
 /etc/paludis-shared/options.bash
 
 echo '
+	net-analyzer/wireshark qt5
+
 	sys-fs/fuse python_abis: 3.6
 
 	sys-fs/sshfs-fuse python_abis: 3.6
