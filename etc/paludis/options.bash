@@ -25,7 +25,7 @@ echo '
 	x11-libs/libfm gtk udisks exif
 	media-libs/tiff opengl
 
-	games-fps/smokinguns data engine smp fb
+	games-fps/smokinguns data server engine smp fb
 	games-fps/zandronum gl server client gtk  sound asm build_options: jobs=1
 	media-sound/fmodapi development libraries
 
