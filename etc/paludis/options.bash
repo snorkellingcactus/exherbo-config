@@ -3,6 +3,8 @@
 /etc/paludis-shared/options.bash
 
 echo '
+	base/libblockdev mdraid cryptsetup
+
 	net-analyzer/wireshark qt5
 
 	sys-fs/fuse python_abis: 3.6
@@ -155,6 +157,16 @@ echo '
 	media-libs/libopenshot python system-jsoncpp PYTHON_ABIS: 3.4
 	media-video/openshot PYTHON_ABIS: 3.4
 	net-libs/libzmq select
+	dev-python/requests PYTHON_ABIS: 3.4
+	dev-python/chardet PYTHON_ABIS: 3.4
+	dev-python/cryptography PYTHON_ABIS: 3.4
+	dev-python/idna PYTHON_ABIS: 3.4
+	dev-python/pyopenssl PYTHON_ABIS: 3.4
+	dev-python/pytest-runner PYTHON_ABIS: 3.4
+	dev-python/cffi PYTHON_ABIS: 3.4
+	dev-python/asn1crypto PYTHON_ABIS: 3.4
+	dev-python/setuptools_scm PYTHON_ABIS: 3.4
+	dev-python/pycparser PYTHON_ABIS: 3.4
 
 	media-sound/fluidsynth pulseaudio
 
