@@ -10,9 +10,15 @@ echo '
 	dev-util/kBuild::SuperHeron-misc
 
 	#No tiene staging.
-        >app-emulation/wine-2.13
+        >app-emulation/wine-2.19
+
+	# Wine fails to compile and causes strange font rendering on webkit.
+	=media-libs/freetype-2.8.1
 
 	#       Qjackctrl & cadeence no andan con jack2.
 #        >=media-sound/jack-audio-connection-kit-1.9.10
-	>=sys-kernel/linux-headers-4.10
+	>sys-kernel/linux-headers-4.13
+	>sys-apps/iproute2-4.13.0
+
+#	lxqt/*::lxde-unofficial
 '

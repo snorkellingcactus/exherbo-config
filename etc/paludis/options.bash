@@ -3,13 +3,31 @@
 /etc/paludis-shared/options.bash
 
 echo '
+	app-crypt/gpgme qt5
+	sys-auth/qtkeychain qt5
+
+	x11-libs/libnotify gobject-introspection
+	x11-libs/qtwebkit qtmultimedia
+
+	app-misc/ca-certificates ca-trust
+
+	dev-python/PySDL2 python_abis: -2.7 3.4
+	games-emulation/mupen64plus-ui-python python_abis: -2.7 3.4
+	games-emulation/mupen64plus-qt qt5
+	app-arch/quazip qt5
+
+	dev-python/notify2 python_abis: 3.4
+
+	net-im/scudcloud python_abis: 3.4
+	dev-python/jsmin:0::cactus python_abis: -2.7 3.4
+
+	net-utils/s6-networking providers: bearssl
+	dev-cpp/poco crypto data json net netssl sqlite util xml -pdf
+	sys-fs/ntfs-3g_ntfsprogs extras
+
 	base/libblockdev mdraid cryptsetup
 
 	net-analyzer/wireshark qt5
-
-	sys-fs/fuse python_abis: 3.6
-
-	sys-fs/sshfs-fuse python_abis: 3.6
 
 	net-misc/connman wifi wispr
 
@@ -30,7 +48,11 @@ echo '
 	media-libs/tiff opengl
 
 	games-fps/smokinguns data server engine smp fb
-	games-fps/zandronum gl server client gtk  sound asm build_options: jobs=1
+	games-fps/urban-terror data server engine smp
+	games-fps/zandronum gl client gtk sound asm build_options: jobs=1
+
+	>=games-fps/zandronum-3.0 server
+
 	media-sound/fmodapi development libraries
 
 	#x11-libs/wxSVG wx-3.0-gtk2 providers: ffmpeg
@@ -80,12 +102,10 @@ echo '
 	#media/vlc -jack
 
 	#cadence:
-	media-sound/cadence  python_abis: 3.3
+	dev-python/PyQt4 dbus
 	x11-libs/qt:4 qt3support
 	>media-sound/jack-audio-connection-kit-0.125.0 dbus
 	x11-libs/dbusmenu-qt qt4
-	dev-python/PyQt4 dbus python_abis: 3.3
-	dev-python/sip python_abis: 3.3
 
 	#DOSBOX:
 	media-libs/SDL:0 dga pulseaudio
@@ -94,11 +114,11 @@ echo '
 	#Para minitube
 	#qtscript
 	media-libs/phonon qt5 pulseaudio gstreamer
-	x11-libs/qtbase:5 glib gtk
+	x11-libs/qtbase:5 glib gtk -journald
 
 	#Para sayonara player
 	x11-libs/qtbase:5 sqlite pulseaudio sql
-	media-plugins/gst-plugins-bad GSTREAMER_PLUGINS: soundtouch
+	media-plugins/gst-plugins-bad GSTREAMER_PLUGINS: soundtouch eglgles
 	#Fails with more jobs.
 	media-sound/sayonara ugly mtp build_options: jobs=1
 
@@ -147,26 +167,9 @@ echo '
 	#dev-util/kBuild:0::SuperHeron-misc scm
 
 	#Para OpenShot
-	dev-python/setuptools PYTHON_ABIS: 3.4
-	dev-python/certifi PYTHON_ABIS: 3.4
-	dev-python/pyzmq PYTHON_ABIS: 3.4
-	dev-python/httplib2 PYTHON_ABIS: 3.4
-	#34
-	dev-python/sip PYTHON_ABIS: 3.4
-	dev-python/PyQt5 webkit multimedia sql PYTHON_ABIS: 3.4
-	media-libs/libopenshot python system-jsoncpp PYTHON_ABIS: 3.4
-	media-video/openshot PYTHON_ABIS: 3.4
+	dev-python/PyQt5 webkit multimedia sql
+	media-libs/libopenshot python system-jsoncpp
 	net-libs/libzmq select
-	dev-python/requests PYTHON_ABIS: 3.4
-	dev-python/chardet PYTHON_ABIS: 3.4
-	dev-python/cryptography PYTHON_ABIS: 3.4
-	dev-python/idna PYTHON_ABIS: 3.4
-	dev-python/pyopenssl PYTHON_ABIS: 3.4
-	dev-python/pytest-runner PYTHON_ABIS: 3.4
-	dev-python/cffi PYTHON_ABIS: 3.4
-	dev-python/asn1crypto PYTHON_ABIS: 3.4
-	dev-python/setuptools_scm PYTHON_ABIS: 3.4
-	dev-python/pycparser PYTHON_ABIS: 3.4
 
 	media-sound/fluidsynth pulseaudio
 
@@ -202,12 +205,12 @@ echo '
 	#A futuro...(No está echo el exhere todavía)
 	#app-speech/speechd flite
 
-	app-speech/speechd espeak pulseaudio python python_abis: 2.7 3.3
+	app-speech/speechd espeak pulseaudio python python_abis: 2.7 3.4
 	app-speech/espeak pulseaudio
-	gnome-bindings/pygobject:3 PYTHON_ABIS: 2.7 3.3
-	gnome-bindings/pygobject:2 PYTHON_ABIS: 2.7 3.3
-	dev-python/dbus-python	PYTHON_ABIS: 2.7 3.3
-	dev-python/pyxdg PYTHON_ABIS: 2.7 3.3
+	gnome-bindings/pygobject:3 PYTHON_ABIS: 2.7 3.4
+	gnome-bindings/pygobject:2 PYTHON_ABIS: 2.7 3.4
+	dev-python/dbus-python	PYTHON_ABIS: 2.7 3.4
+	dev-python/pyxdg PYTHON_ABIS: 2.7 3.4
 	dev-libs/at-spi2-core gobject-introspection
 	x11-libs/gtk+:3 gobject-introspection
 	#como consecuencia de gtk+:
@@ -257,8 +260,9 @@ echo '
 	#media-libs/mesa -* video_cards_i915 abi_x86_64
 
 	# Para libreoffice:
-	app-office/libreoffice gtk pdfimport python_abis: 3.5
+	app-office/libreoffice gtk pdfimport
 	x11-libs/harfbuzz graphite
+	dev-libs/xmlsec nss
 
 	#Para vivaldi-snapshot:
 	app-text/poppler cairo glib
@@ -278,8 +282,7 @@ echo '
 	media-sound/jack-audio-connection-kit alsa
 
 	#Para cadence
-	dev-python/pyatspi python_abis: 3.3
-	#dev-libs/libxml2 PYTHON_ABIS: -2.7 3.3
+	#dev-libs/libxml2 PYTHON_ABIS: -2.7 3.4
 	app-crypt/qca:2 qt4
 
 	media-sound/pulseaudio webrtc-aec gtk equalizer -oss caps
@@ -362,7 +365,7 @@ echo '
 
 
 	#go
-	#dev-lang/go bootstrap
+	dev-lang/go bootstrap
 
 	sys-libs/glibc multiarch
 
@@ -413,7 +416,7 @@ echo '
 	games-strategy/0ad lobby
 
 
-	# dev-util/itstool python_abis: -2.7 3.3
+	# dev-util/itstool python_abis: -2.7 3.4
 
 	# Para PeaZip:
 	dev-lang/fpc source
@@ -421,27 +424,25 @@ echo '
 	dev-lang/lazarus nogui
 	app-arch/peazip qt4
 
-	lxqt/lxqt-l10n libfm-qt liblxqt lxqt-about lxqt-config lxqt-powermanagement lxqt-runner lxqt-session compton-conf libfm-qt liblxqt lximage-qt lxqt-about lxqt-admin lxqt-config lxqt-globalkeys lxqt-notificationd lxqt-panel lxqt-policykit lxqt-powermanagement lxqt-runner lxqt-session lxqt-sudo obconf-qt lxqt-openssh-askpass pavucontrol-qt pcmanfm-qt qterminal build_options: recommended_tests
-
-	dev-python/appdirs python_abis: 3.4
-	dev-python/packaging python_abis: 3.4
-	dev-python/six python_abis: 3.4
-	dev-python/pyparsing python_abis: 3.4
+	lxqt/lxqt-l10n libfm-qt liblxqt lxqt-about lxqt-config lxqt-powermanagement lxqt-runner lxqt-session compton-conf libfm-qt liblxqt lximage-qt lxqt-about lxqt-admin lxqt-config lxqt-globalkeys lxqt-notificationd lxqt-panel lxqt-policykit lxqt-powermanagement lxqt-runner lxqt-session lxqt-sudo obconf-qt lxqt-openssh-askpass pavucontrol-qt pcmanfm-qt qterminal lxqt-policykit-agent build_options: recommended_tests
 
 	games-fps/iortcw engine data linguas: espanol
 
 	media-sound/ardour lv2 linuxvst optimize
 	sys-fs/squashfs-tools xs lzo lz4
 
-	games-fps/doomsday doom fluidsynth openal resources snowberry tools
+	games-fps/doomsday fmod client
 
 	games-emulation/mupen64plus-core asm
+	# Para mupen:
+#	dev-python/PyQt5 dbus
 
 	app-emulation/dosbox-glide glide alsa
 
 	media-sound/qtractor lv2
 
 	dev-python/pytest python_abis: 2.7 3.4
+
 	dev-python/py python_abis: 2.7 3.4
 
 	media-sound/sox dlna
