@@ -1,6 +1,37 @@
 #!/bin/sh
 
 echo '
+	sys-devel/meson python_abis: 3.4 -3.5 -3.6
+	sys-fs/fuse python_abis: 3.4
+	sys-fs/sshfs-fuse python_abis: 3.4
+	app-office/libreoffice python_abis: 3.4
+	media-libs/libopenshot python_abis: 3.4
+	media-video/openshot python_abis: 3.4
+	dev-python/pyzmq python_abis: 3.4
+	dev-python/httplib2 python_abis: 3.4
+	dev-python/requests python_abis: 3.4
+	dev-python/PyQt5 python_abis: 3.4
+	dev-python/chardet python_abis: 3.4
+	dev-python/cryptography python_abis: 3.4
+	dev-python/idna python_abis: 3.4
+	dev-python/pyopenssl python_abis: 3.4
+	dev-python/urllib3 python_abis: 3.4
+	dev-python/sip python_abis: 3.4
+	dev-python/six python_abis: 3.4
+	dev-python/cffi python_abis: 3.4
+	dev-python/packaging python_abis: 3.4
+	dev-python/asn1crypto python_abis: 3.4
+	dev-python/pycparser python_abis: 3.4
+	dev-python/pyparsing python_abis: 3.4
+	media-sound/cadence python_abis: 3.4
+	dev-python/PyQt4 python_abis: 3.4
+
+	dev-python/pytest-runner python_abis: 3.4
+	dev-python/certifi python_abis: 3.4
+	dev-python/setuptools python_abis: 3.4
+	dev-python/setuptools_scm python_abis: 3.4
+
+	*/* python_abis: -3.3
 	*/* -man -development -readline build_options: symbols=strip -recommended_tests dwarf_compress jobs=9 LIBC: glibc -musl parts: -documentation
 	*/* targets: x86_64-pc-linux-gnu i686-pc-linux-gnu
 	*/* -systemd consolekit
@@ -51,8 +82,6 @@ echo '
 	#Para git
 	dev-lang/swig perl
 	dev-scm/subversion perl
-
-	sys-devel/meson python_abis: -3.3 3.5
 
 	sys-apps/paludis search-index xml
 '

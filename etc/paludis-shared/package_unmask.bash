@@ -58,7 +58,8 @@ echo '
 
 
 	net-wireless/rtl8192se scm
-	<=x11-libs/qtwebkit-5.8.0-r1
+#	<=x11-libs/qtwebkit-5.9.0
+	<=x11-libs/qtwebkit-5.212.0-alpha2
 
 
 '
