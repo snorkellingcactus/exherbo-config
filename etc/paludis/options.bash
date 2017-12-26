@@ -9,6 +9,12 @@ echo '
 
 	dev-util/gitlab-runner docker build_options: jobs=1
 
+	media-sound/guitarix2 lv2
+	dev-util/gitlab-runner docker build_options: jobs=1
+
+	sys-auth/ConsoleKit2 polkit
+	sys-boot/grub efi
+
 	app-crypt/gpgme qt5
 	sys-auth/qtkeychain qt5
 
@@ -128,7 +134,7 @@ echo '
 	x11-libs/qtbase:5 sqlite pulseaudio sql
 	media-plugins/gst-plugins-bad GSTREAMER_PLUGINS: soundtouch eglgles
 	#Fails with more jobs.
-	media-sound/sayonara ugly mtp build_options: jobs=1
+	media-sound/sayonara ugly mtp linguas: en es build_options: jobs=1
 
 	www-plugins/pipelight gnome build_options: jobs=1
 	net-dns/dnsmasq dbus
