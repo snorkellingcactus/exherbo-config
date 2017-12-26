@@ -32,13 +32,13 @@ echo '
 	dev-python/setuptools_scm python_abis: 3.4
 
 	*/* python_abis: -3.3
-	*/* -man -development -readline build_options: symbols=strip -recommended_tests dwarf_compress jobs=9 LIBC: glibc -musl parts: -documentation
+	*/* -man -development -readline build_options: symbols=strip -recommended_tests dwarf_compress jobs=4 LIBC: glibc -musl parts: -documentation
 	*/* targets: x86_64-pc-linux-gnu i686-pc-linux-gnu
 	*/* -systemd consolekit
 	*/* providers: -systemd eudev rsyslog
 	#Temporal, para eliminar systemd:
         #sys-apps/util-linux -udev
-	*/* mmx sse sse2  X86_CPU_FEATURES: mmx sse sse2  AMD64_CPU_FEATURES: mmx sse sse2 
+	*/* mmx sse sse2 sse3 ssse3 sse4 sse41 ssse42 X86_CPU_FEATURES: mmx sse sse2 sse3 ssse3 sse4 sse41 ssse42 AMD64_CPU_FEATURES: mmx sse sse2 sse3 ssse3 sse4 sse41 ssse42
 	*/* avahi X abi_x86_64 -branding -bash-completion -vim-syntax
 	*/* gstreamer_plugins: ogg cdda theora vorbis libvisual xv pango alsa flac jack pulseaudio taglib speex vpx wavpack musepack resin sndfile faac faad mpg123 cdio dvdread h264 lame mad mpeg2 mp2 mjpeg
 	*/* nsplugin
