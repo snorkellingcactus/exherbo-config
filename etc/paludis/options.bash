@@ -3,6 +3,12 @@
 /etc/paludis-shared/options.bash
 
 echo '
+	dev-libs/libdbusmenu gtk2
+	dev-libs/libindicator gtk2
+	dev-libs/libappindicator gtk2
+
+	dev-util/gitlab-runner docker build_options: jobs=1
+
 	app-crypt/gpgme qt5
 	sys-auth/qtkeychain qt5
 
@@ -11,6 +17,8 @@ echo '
 
 	app-misc/ca-certificates ca-trust
 
+	dev-python/pluggy python_abis: 2.7 3.4
+	dev-python/attrs python_abis: 2.7 3.4
 	dev-python/PySDL2 python_abis: -2.7 3.4
 	games-emulation/mupen64plus-ui-python python_abis: -2.7 3.4
 	games-emulation/mupen64plus-qt qt5
@@ -302,7 +310,7 @@ echo '
 	net-libs/webkit gtk media opengl
 	#net-libs/webkit providers: gtk2 -gtk3
 	#net-libs/webkit-gtk media opengl
-	net-www/firefox pgo pulseaudio gstreamer -oss libproxy eme
+	net-www/firefox pulseaudio gstreamer -oss libproxy eme
 	#net-www/firefox providers: -gtk3 gtk2
 	net-www/firefox build_options: work=preserve
 
