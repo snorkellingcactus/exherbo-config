@@ -1,0 +1,19 @@
+#!/bin/bash
+
+IP_LOCAL=0.0.0.0
+IP_REMOTE=25.135.211.42
+USER_REMOTE=dashboard
+
+PORTS_LOCAL="80 443 23 8081"
+PORTS_REMOTE[23]=22
+
+for i in ${PORTS_LOCAL}
+do
+	PORT_REMOTE="${PORTS_REMOTE[${i}]}"
+
+	[ -z "${PORT_REMOTE}" ] && PORT_REMOTE="${i}"
+
+	SSH_ARGS+="-L ${IP_LOCAL}:${i}:${IP_REMOTE}:${PORT_REMOTE} "
+done
+
+sudo ssh ${SSH_ARGS} ${USER_REMOTE}@${IP_REMOTE}
