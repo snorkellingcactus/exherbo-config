@@ -40,7 +40,7 @@ echo '
         #sys-apps/util-linux -udev
 	*/* mmx sse sse2 sse3 ssse3 X86_CPU_FEATURES: mmx sse sse2 sse3 ssse3 AMD64_CPU_FEATURES: mmx sse sse2 sse3 ssse3
 	*/* avahi X abi_x86_64 -branding -bash-completion -vim-syntax
-	*/* gstreamer_plugins: ogg cdda theora vorbis libvisual xv pango alsa flac jack pulseaudio taglib speex vpx wavpack musepack resin sndfile faac faad mpg123 cdio dvdread h264 lame mad mpeg2 mp2 mjpeg
+	*/* gstreamer_plugins: ogg cdda theora vorbis libvisual xv pango alsa flac jack pulseaudio taglib speex vpx wavpack musepack resin sndfile faac faad mpg123 cdio dvdread h264 lame mad mpeg2 mp2 mjpeg opus
 	*/* nsplugin
 	*/* LINGUAS:		-* es_LA es_AR es_ES es es_ar es-es es-la
 	*/* INPUT_DEVICES:	-* evdev keyboard synaptics

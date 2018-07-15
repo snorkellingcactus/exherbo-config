@@ -3,6 +3,7 @@
 /etc/paludis-shared/options.bash
 
 echo '
+	media-plugins/gst-plugins-base opengl
 	dev-libs/libdbusmenu gtk2
 	dev-libs/libindicator gtk2
 	dev-libs/libappindicator gtk2
@@ -43,7 +44,8 @@ echo '
 
 	net-analyzer/wireshark qt5
 
-	net-misc/connman wifi wispr
+	net-misc/connman wifi wispr openvpn openconnect
+        net-misc/connman-gtk openconnect
 
 	#Para DVDStyler:
 	media-libs/libmng lcms
