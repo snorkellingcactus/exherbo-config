@@ -3,6 +3,24 @@
 /etc/paludis-shared/options.bash
 
 echo '
+        net-im/pidgin -avahi -ncurses providers: nss
+	net-im/bitlbee purple jabber
+	net-irc/quassel webengine client baselayout dbus phonon core
+	# needed for plugins-bad
+	media-plugins/gst-plugins-base opengl opus
+#	media-sound/bristol alsa
+	media-sound/vmpk dbus
+	net-misc/openvpn lzo
+	media-video/simplescreenrecorder pulseaudio
+
+	#uevent providers: qt5
+	games-util/antimicro X xtest 
+
+	x11-libs/qtmultimedia gstreamer
+	sys-fs/unionfs-fuse xattr
+	app-text/qpdfview providers: qt5
+	app-text/poppler qt5
+
 	dev-libs/libdbusmenu gtk2
 	dev-libs/libindicator gtk2
 	dev-libs/libappindicator gtk2
@@ -19,7 +37,7 @@ echo '
 	sys-auth/qtkeychain qt5
 
 	x11-libs/libnotify gobject-introspection
-	x11-libs/qtwebkit qtmultimedia
+	x11-libs/qtwebkit qtmultimedia build_options: jobs=1
 
 	app-misc/ca-certificates ca-trust
 
@@ -43,7 +61,8 @@ echo '
 
 	net-analyzer/wireshark qt5
 
-	net-misc/connman wifi wispr
+	net-misc/connman wifi wispr openvpn openconnect
+	net-misc/connman-gtk openconnect
 
 	#Para DVDStyler:
 	media-libs/libmng lcms
@@ -56,8 +75,9 @@ echo '
 	net-wireless/wpa_supplicant nl80211
 
 	#Para pcmanfm:
-	x11-apps/pcmanfm gtk
+	#x11-apps/pcmanfm gtk
 	#x11-libs/libfm extra-only
+        # gtk
 	x11-libs/libfm gtk udisks exif
 	media-libs/tiff opengl
 
@@ -86,7 +106,7 @@ echo '
 	media-libs/libsndfile flac
 
 	#para minitube
-	media-plugins/gst-plugins-good gstreamer_plugins: soup
+	media-plugins/gst-plugins-good X gstreamer_plugins: soup
 
 	#acetoneiso:
 	x11-libs/qt:4 phonon webkit
@@ -143,7 +163,7 @@ echo '
 	x11-misc/tint2 gtk
 
 	*/* jack vorbis theora vpx mikmod mod mp3 mp4 ogg speex  midi fluidsynth timidity faac aacplus cdio fuse realtime libsamplerate amr sndfile modplug
-	*/* threads schroedinger libass smp wavpack musepack ffmpeg vcd lame pfd pdf quicktime -bluetooth scanner fbcon aalib directfb libcaca zeroconf
+	*/* threads schroedinger libass smp wavpack musepack ffmpeg vcd lame pfd pdf quicktime bluetooth scanner fbcon aalib directfb libcaca zeroconf
 	*/* device-mapper nls threads providers: jpeg-turbo -ijg-jpeg
 	*/* gstreamer_plugins: ogg cdda theora vorbis libvisual xv pango alsa flac jack pulseaudio taglib speex vpx wavpack musepack resin sndfile faac faad mpg123 cdio dvdread h264 lame mad mpeg2 mp2 mjpeg
 	*/* targets: x86_64-pc-linux-gnu i686-pc-linux-gnu
@@ -152,7 +172,7 @@ echo '
 	net-misc/tucan gtk
 
 	#gconf? cups
-	net-www/chromium-stable pulseaudio
+	net-www/chromium-stable pulseaudio build_options: jobs=1
 	net-www/chromium-browser pulseaudio
 	x11-libs/gtk+ cups
 
@@ -181,11 +201,11 @@ echo '
 	#dev-util/kBuild:0::SuperHeron-misc scm
 
 	#Para OpenShot
-	dev-python/PyQt5 webkit multimedia sql
+	dev-python/PyQt5 webkit multimedia sql -bluetooth
 	media-libs/libopenshot python system-jsoncpp
 	net-libs/libzmq select
 
-	media-sound/fluidsynth pulseaudio
+	media-sound/fluidsynth pulseaudio alsa
 
 	net-libs/webkit-gtk opengl media
 
@@ -210,7 +230,7 @@ echo '
 	#dev-util/glade python gobject-introspection
 
 	#Prueba para automontar dispositivos en pcmanfm:
-	gnome-desktop/gvfs udisks
+	gnome-desktop/gvfs udisks cdda mtp archive samba http
 
 	#Prueba. Para ver si le da interfaz.
 	media-gfx/graphviz gtk
@@ -274,7 +294,8 @@ echo '
 	#media-libs/mesa -* video_cards_i915 abi_x86_64
 
 	# Para libreoffice:
-	app-office/libreoffice gtk pdfimport
+        # gtk
+	app-office/libreoffice qt5  pdfimport -bluetooth
 	x11-libs/harfbuzz graphite
 	dev-libs/xmlsec nss
 
@@ -297,9 +318,10 @@ echo '
 
 	#Para cadence
 	#dev-libs/libxml2 PYTHON_ABIS: -2.7 3.4
-	app-crypt/qca:2 qt4
+	app-crypt/qca:2 qt4 qt5
 
-	media-sound/pulseaudio webrtc-aec gtk equalizer -oss caps
+	# exhere error: journald requires systemd
+	media-sound/pulseaudio webrtc-aec gtk equalizer -oss caps -journald
 	media-libs/libcanberra pulseaudio 
 
 	#Linea comentada porque fuerza a actualizar ffmpeg entrando en conflicto con vlc (Requieren distintos slots).
@@ -316,9 +338,8 @@ echo '
 	net-libs/webkit gtk media opengl
 	#net-libs/webkit providers: gtk2 -gtk3
 	#net-libs/webkit-gtk media opengl
-	net-www/firefox pulseaudio gstreamer -oss libproxy eme
+	net-www/firefox pulseaudio gstreamer -oss libproxy eme pgo
 	#net-www/firefox providers: -gtk3 gtk2
-	net-www/firefox build_options: work=preserve
 
 	#Para eviacam:
 	media-libs/opencv gtk v4l
@@ -342,7 +363,7 @@ echo '
 	xfce-base/xfce4-settings libinput sound-settings keyboard-layout cursor-themes
 
 	#Requerido por el flag speex
-	 media-sound/vorbis-tools -speex
+	 media-sound/vorbis-tools -speex flac
 
 	media-libs/libwebp X86_CPU_FEATURES: sse2
 
@@ -351,13 +372,11 @@ echo '
 	app-shells/dash
 
 	games-fps/dhewm3 curl core base sdl2
-	games-fps/dhewm3 build_options: work=preserve
 
 	gnome-desktop/gnome-media gstreamer-properties
 
 	lxde-desktop/lxpolkit gtk3
 	app-text/poedit providers: -gtk2 gtk3
-	x11-libs/wxGTK:3.0 providers: gtk2 gtk3
 	net-libs/webkit	providers: -gtk2 gtk3
 
 	app-misc/rainlendar pro
@@ -372,14 +391,14 @@ echo '
 	#pyxdg
 	dev-libs/keybinder python
 
-	sys-devel/gdb guile
+#	sys-devel/gdb guile
 
 	#mjpegtools, no compila:
 	media-video/mjpegtools -quicktime
 
 
 	#go
-	dev-lang/go bootstrap
+	#dev-lang/go bootstrap
 
 	sys-libs/glibc multiarch
 
@@ -390,7 +409,7 @@ echo '
 
 	#stuntrally:
 	dev-games/mygui ogre
-	dev-libs/ogre freeimage boost opengl cg archives
+	dev-libs/ogre freeimage boost opengl cg archives -examples
 	games-sports/stuntrally game editor
 	sci-physics/bullet bullet3 extras
 
@@ -408,7 +427,7 @@ echo '
 	dev-perl/Tk build_options: jobs=1
 
 	#redeclipse:
-	games-fps/redeclipse client server data build_options: work=preserve
+	games-fps/redeclipse client server data
 	media-libs/SDL_mixer mad
 	media-libs/SDL:2 opengl
 
@@ -434,8 +453,8 @@ echo '
 
 	# Para PeaZip:
 	dev-lang/fpc source
-	#dev-lang/lazarus qt
-	dev-lang/lazarus nogui
+	dev-lang/lazarus qt
+#	dev-lang/lazarus nogui
 	app-arch/peazip qt4
 
 	lxqt/lxqt-l10n libfm-qt liblxqt lxqt-about lxqt-config lxqt-powermanagement lxqt-runner lxqt-session compton-conf libfm-qt liblxqt lximage-qt lxqt-about lxqt-admin lxqt-config lxqt-globalkeys lxqt-notificationd lxqt-panel lxqt-policykit lxqt-powermanagement lxqt-runner lxqt-session lxqt-sudo obconf-qt lxqt-openssh-askpass pavucontrol-qt pcmanfm-qt qterminal lxqt-policykit-agent build_options: recommended_tests
@@ -460,7 +479,7 @@ echo '
 	dev-python/py python_abis: 2.7 3.4
 
 	media-sound/sox dlna
-	media-sound/darkice alsa
+	media-sound/darkice alsa opus
 
 	media-sound/hydrogen lash ladspa lrdf pulseaudio rubberband shared
 

@@ -7,6 +7,7 @@
 #=net-www/chromium-stable-52.0.2743.116
 
 echo '
+	>=dev-libs/ogre-1.10
 	dev-util/kBuild::SuperHeron-misc
 
 	#No tiene staging.

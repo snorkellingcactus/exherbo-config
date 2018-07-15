@@ -1,6 +1,6 @@
 #!/bin/sh
 
-./zswap
+#./zswap
 
 sysctl -w vm.swappiness=10
 
@@ -77,4 +77,22 @@ proc_apply_prop(){
 
 sysctl_apply_prop "fs.inotify.max_user_watches" "sys/fs/inotify/max_user_watches" 524288
 sysctl_apply_prop "dev.hpet.max-user-freq" "sys/dev/hpet/max-user-freq" 3072
+
+echo 3072 > /sys/class/rtc/rtc0/max_user_freq
+
+HPET=/dev/hpet
+
+[ -c "${HPET}" ] && chmod a+rwx "${HPET}"
+
 #"/sys/class/rtc/rtc0/max_user_freq"
+
+. /home/cactus/Documentos/Scripts/rtprio.sh
+
+for pname in i915 acpi snd_hda mei_me 801_smb rtl_pci i8042 ipv6_addrconf
+do
+    min_prio $(pgrep -f "${pname}")
+done
+
+set_rtprio 96 $(irq_pid "rtc0")
+
+unset HPET

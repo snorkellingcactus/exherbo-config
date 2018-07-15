@@ -1,7 +1,16 @@
 #!/bin/sh
 
 echo '
-	sys-devel/meson python_abis: 3.4 -3.5 -3.6
+	sys-boot/dracut providers: sysvinit
+	sys-auth/polkit providers: consolekit
+
+	x11-libs/wxGTK:3.0 providers: gtk2 gtk3
+	dev-python/atomicwrites python_abis: 3.4
+	dev-python/coverage python_abis: 3.4
+	dev-python/hypothesis python_abis: 3.4
+	dev-python/zopeinterface python_abis: 3.4
+	dev-python/more-itertools python_abis: 3.4
+	sys-devel/meson python_abis: -3.4 3.5 -3.6
 	sys-fs/fuse python_abis: 3.4
 	sys-fs/sshfs-fuse python_abis: 3.4
 	app-office/libreoffice python_abis: 3.4
@@ -32,7 +41,7 @@ echo '
 	dev-python/setuptools_scm python_abis: 3.4
 
 	*/* python_abis: -3.3
-	*/* -man -development -readline build_options: symbols=strip -recommended_tests dwarf_compress jobs=4 LIBC: glibc -musl parts: -documentation
+	*/* -man -development -readline build_options: symbols=strip -recommended_tests dwarf_compress jobs=1 LIBC: glibc -musl parts: -documentation
 	*/* targets: x86_64-pc-linux-gnu i686-pc-linux-gnu
 	*/* -systemd consolekit
 	*/* providers: -systemd eudev rsyslog
@@ -40,7 +49,7 @@ echo '
         #sys-apps/util-linux -udev
 	*/* mmx sse sse2 sse3 ssse3 sse4 sse41 ssse42 X86_CPU_FEATURES: mmx sse sse2 sse3 ssse3 sse4 sse41 ssse42 AMD64_CPU_FEATURES: mmx sse sse2 sse3 ssse3 sse4 sse41 ssse42
 	*/* avahi X abi_x86_64 -branding -bash-completion -vim-syntax
-	*/* gstreamer_plugins: ogg cdda theora vorbis libvisual xv pango alsa flac jack pulseaudio taglib speex vpx wavpack musepack resin sndfile faac faad mpg123 cdio dvdread h264 lame mad mpeg2 mp2 mjpeg
+	*/* gstreamer_plugins: ogg cdda theora vorbis libvisual xv pango alsa flac jack pulseaudio taglib speex vpx wavpack musepack resin sndfile faac faad mpg123 cdio dvdread h264 lame mad mpeg2 mp2 mjpeg opus uvc
 	*/* nsplugin
 	*/* LINGUAS:		-* es_LA es_AR es_ES es es_ar es-es es-la
 	*/* INPUT_DEVICES:	-* evdev keyboard
@@ -63,7 +72,7 @@ echo '
 	#Requerido por la constraint opencl de mesa i915
 	#xa xvmc
 	#Gallium:
-	x11-dri/mesa video_drivers: intel gallium-swrast
+	x11-dri/mesa video_drivers: intel
 	# gl-vendor:unritten
 	# video_drivers: gallium-swrast
 	# x11-dri/mesa llvm llvm-static
@@ -80,7 +89,7 @@ echo '
 	sys-devel/gcc graphite
 
 	#Para git
-	dev-lang/swig perl
+	dev-lang/swig perl python
 	dev-scm/subversion perl
 
 	sys-apps/paludis search-index xml
