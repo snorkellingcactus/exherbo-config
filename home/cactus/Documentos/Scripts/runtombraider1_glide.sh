@@ -12,7 +12,8 @@ glide_values=( 'true' )
 . ./mount_iso.sh
 . ./gen_dosbox_conf.sh
 
-DIR_GAME="${HOME}/Documentos/Instaladores y Portables/TombRaider1/TOMBRAID/"
+#DIR_GAME="${HOME}/Documentos/Instaladores y Portables/TombRaider1/TOMBRAID/"
+DIR_GAME="${HOME}/.PlayOnLinux/wineprefix/TombRaider1/drive_c/TOMBRAID/"
 DISC_C="\"${DIR_GAME}\""
 DISC_D=$( get_iso_mountpoint )
 EXEC_DIR=''
@@ -33,11 +34,14 @@ then
 	${EXEC_PATH}
 #	exit"
 
+
+	echo "${dosbox_autoexec_custom}"
+
 	declare dosbox_{sdl_{output=openglnb,fullscreen=true,fulldouble=false},render_scaler=none,cpu_{cycles=max,cputype=auto},mixer_nosound=false,midi_mididevice=default}
 
 	gen_dosbox_conf_launch
 
 	umount_iso
 fi
-
+echo hola
 mv "${LOCAL_EXEC_PATH}"{.prev,}

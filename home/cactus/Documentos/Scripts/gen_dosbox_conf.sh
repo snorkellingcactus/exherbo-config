@@ -3,6 +3,7 @@
 [ -z "${GEN_DOSBOX_CONF_TEMP_FILE}" ] && GEN_DOSBOX_CONF_TEMP_FILE=~/.dosbox/tmpconf.conf
 [ -z "${DOSBOX}" ] && DOSBOX=dosbox
 
+echo "GEN_DOSBOX_CONF_TEMP_FILE=${GEN_DOSBOX_CONF_TEMP_FILE}"
 
 gen_dosbox_conf()
 {

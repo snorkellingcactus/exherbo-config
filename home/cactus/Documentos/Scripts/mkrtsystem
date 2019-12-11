@@ -86,13 +86,22 @@ HPET=/dev/hpet
 
 #"/sys/class/rtc/rtc0/max_user_freq"
 
-. /home/cactus/Documentos/Scripts/rtprio.sh
+. $(dirname $0)/rtprio.sh
 
 for pname in i915 acpi snd_hda mei_me 801_smb rtl_pci i8042 ipv6_addrconf
 do
-    min_prio $(pgrep -f "${pname}")
+    PGREP=$(pgrep -f "${pname}")
+
+    if [ -n "${PGREP}" ]
+    then
+       min_prio "${PGREP}"
+    fi
 done
 
-set_rtprio 96 $(irq_pid "rtc0")
+PIDRTC="$(irq_pid "rtc0")"
+if [ -n "${PIDRTC}" ]
+then
+    set_rtprio 96 "${PIDRTC}"
+fi
 
 unset HPET

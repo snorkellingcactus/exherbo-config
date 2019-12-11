@@ -8,4 +8,11 @@ echo '
 	dev-libs/bearssl testing
 	games-strategy/spring *
 	mail-client/trojita scm
+	x11-server/xorg-server security
+	distribution/steam broken
+
+	virtual/jdk:10.0
+	virtual/jre:10.0
+
+        lxqt/lxqt-l10n pending-removal
 '

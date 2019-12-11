@@ -3,6 +3,26 @@
 /etc/paludis-shared/options.bash
 
 echo '
+  gnome-desktop/dconf vapi
+  app-misc/ca-certificates ca-trust
+
+  dev-python/enum34 python_abis: 2.7
+  dev-scm/mercurial python_abis: 2.7
+  dev-python/setuptools python_abis: 2.7
+  dev-python/certifi python_abis: 2.7
+  app-emulation/PCSX2 wx-3.0-gtk2
+
+	www-servers/nginx http stream nginx_modules: v2 proxy access auth_basic upstream_keepalive rewrite referer
+	virtual/jdk providers: openjdk-bin
+	x11-libs/qtimageformats webp tiff
+	dev-cpp/wt pango sqlite unwind libwtdbo resources
+	games-platforms/OpenRaider audio
+	net-fs/samba addc ads acl cups gnutls ldap system-krb5 winbind
+	media-sound/linuxsampler instruments-db
+	dev-libs/libxml2 python
+        media-sound/cantata http replaygain mtp
+	sci-apps/gnuplot qt5 gd
+	net-misc/tinc lzo vde
         net-im/pidgin -avahi -ncurses providers: nss
 	net-im/bitlbee purple jabber
 	net-irc/quassel webengine client baselayout dbus phonon core
@@ -29,7 +49,7 @@ echo '
 
 	media-sound/guitarix2 lv2
 	dev-util/gitlab-runner docker build_options: jobs=1
-
+#       Comment it to unlock it
 	sys-auth/ConsoleKit2 polkit
 	sys-boot/grub efi
 
@@ -39,19 +59,8 @@ echo '
 	x11-libs/libnotify gobject-introspection
 	x11-libs/qtwebkit qtmultimedia build_options: jobs=1
 
-	app-misc/ca-certificates ca-trust
-
-	dev-python/pluggy python_abis: 2.7 3.4
-	dev-python/attrs python_abis: 2.7 3.4
-	dev-python/PySDL2 python_abis: -2.7 3.4
-	games-emulation/mupen64plus-ui-python python_abis: -2.7 3.4
 	games-emulation/mupen64plus-qt qt5
 	app-arch/quazip qt5
-
-	dev-python/notify2 python_abis: 3.4
-
-	net-im/scudcloud python_abis: 3.4
-	dev-python/jsmin:0::cactus python_abis: -2.7 3.4
 
 	net-utils/s6-networking providers: bearssl
 	dev-cpp/poco crypto data json net netssl sqlite util xml -pdf
@@ -61,8 +70,9 @@ echo '
 
 	net-analyzer/wireshark qt5
 
-	net-misc/connman wifi wispr openvpn openconnect
-	net-misc/connman-gtk openconnect
+	# openconnect on both
+	net-misc/connman wifi wispr openvpn
+	net-misc/connman-gtk -openconnect
 
 	#Para DVDStyler:
 	media-libs/libmng lcms
@@ -76,7 +86,7 @@ echo '
 
 	#Para pcmanfm:
 	#x11-apps/pcmanfm gtk
-	#x11-libs/libfm extra-only
+#	x11-libs/libfm extra-only
         # gtk
 	x11-libs/libfm gtk udisks exif
 	media-libs/tiff opengl
@@ -110,11 +120,12 @@ echo '
 
 	#acetoneiso:
 	x11-libs/qt:4 phonon webkit
-	media-libs/phonon qt4
+#	media-libs/phonon qt4
 
 	x11-libs/qt:4 gtk glib
 	sys-auth/polkit-qt qt5
-	media-gfx/gimp exif mng postcript svg tiff wmf
+	# wmf
+	media-gfx/gimp exif mng postcript svg tiff heif
 
 	media-gfx/sane-backends usb
 
@@ -131,15 +142,15 @@ echo '
 	media-sound/rakarrack jacksession
 
 	#Habilitar lua para las extensiones y gnutls para urls de por ej. youtube.
-	media/vlc  a52 aac ass cddb dirac dvd flac gstreamer h264 hevc id3 live matroska mp2 mpc mpeg2 opus taglib va vcdinfo qt5 lua gnutls pulseaudio
+	media/vlc  a52 aac ass cddb dirac dvd flac gstreamer h264 hevc id3 live matroska mp2 mpc mpeg2 opus taglib va vcdinfo qt5 lua gnutls pulseaudio mtp
 	#No anda, busca muy extrañamente /usr/x86_64-pc-linux-gnu/lib/libjack.la
 	#media/vlc -jack
 
 	#cadence:
-	dev-python/PyQt4 dbus
-	x11-libs/qt:4 qt3support
+	dev-python/PyQt5 dbus
 	>media-sound/jack-audio-connection-kit-0.125.0 dbus
-	x11-libs/dbusmenu-qt qt4
+	dev-python/dbus-python python_abis: 2.7
+#	x11-libs/dbusmenu-qt qt4
 
 	#DOSBOX:
 	media-libs/SDL:0 dga pulseaudio
@@ -190,7 +201,7 @@ echo '
 	#dev-libs/gtk-vnc pulseaudio
 
 	#Para dooble
-	x11-libs/qtwebengine pulseaudio
+	x11-libs/qtwebengine pulseaudio jobs: 1
 
 	x11-libs/libva opengl
 
@@ -239,12 +250,9 @@ echo '
 	#A futuro...(No está echo el exhere todavía)
 	#app-speech/speechd flite
 
-	app-speech/speechd espeak pulseaudio python python_abis: 2.7 3.4
+	
 	app-speech/espeak pulseaudio
-	gnome-bindings/pygobject:3 PYTHON_ABIS: 2.7 3.4
-	gnome-bindings/pygobject:2 PYTHON_ABIS: 2.7 3.4
-	dev-python/dbus-python	PYTHON_ABIS: 2.7 3.4
-	dev-python/pyxdg PYTHON_ABIS: 2.7 3.4
+	
 	dev-libs/at-spi2-core gobject-introspection
 	x11-libs/gtk+:3 gobject-introspection
 	#como consecuencia de gtk+:
@@ -254,9 +262,6 @@ echo '
 	gnome-desktop/gsettings-desktop-schemas gobject-introspection
 
 	x11-libs/gdk-pixbuf::i686-pc-linux-gnu -gobject-introspection
-
-
-	#*/* PYTHON_ABIS: 3.5
 
 	sys-apps/lshw gtk
 
@@ -286,6 +291,7 @@ echo '
 	#Esto hace que use algo de un jsoncpp "interno"
 	#entonces paludis no tiene que instalarlo.
 	#sys-devel/cmake bootstrap
+        sys-devel/cmake parts: binaries data
 
 	#Para webkit-2.11
 	dev-lang/llvm static
@@ -317,11 +323,10 @@ echo '
 	media-sound/jack-audio-connection-kit alsa
 
 	#Para cadence
-	#dev-libs/libxml2 PYTHON_ABIS: -2.7 3.4
 	app-crypt/qca:2 qt4 qt5
 
-	# exhere error: journald requires systemd
-	media-sound/pulseaudio webrtc-aec gtk equalizer -oss caps -journald
+        media-sound/pulseaudio webrtc-aec gtk equalizer -oss caps -journald
+
 	media-libs/libcanberra pulseaudio 
 
 	#Linea comentada porque fuerza a actualizar ffmpeg entrando en conflicto con vlc (Requieren distintos slots).
@@ -410,7 +415,7 @@ echo '
 	#stuntrally:
 	dev-games/mygui ogre
 	dev-libs/ogre freeimage boost opengl cg archives -examples
-	games-sports/stuntrally game editor
+	games-sports/stuntrally game editor dedicated
 	sci-physics/bullet bullet3 extras
 
 
@@ -449,8 +454,6 @@ echo '
 	games-strategy/0ad lobby
 
 
-	# dev-util/itstool python_abis: -2.7 3.4
-
 	# Para PeaZip:
 	dev-lang/fpc source
 	dev-lang/lazarus qt
@@ -472,26 +475,24 @@ echo '
 
 	app-emulation/dosbox-glide glide alsa
 
-	media-sound/qtractor lv2
-
-	dev-python/pytest python_abis: 2.7 3.4
-
-	dev-python/py python_abis: 2.7 3.4
+	media-sound/qtractor lv2 dssi
 
 	media-sound/sox dlna
 	media-sound/darkice alsa opus
 
 	media-sound/hydrogen lash ladspa lrdf pulseaudio rubberband shared
 
-	dev-lang/node system-openssl
+	# (requires upgrding breaking-API openssl)
+	# system-openssl
+	dev-lang/node
 
 	# Para templ.co
 	dev-db/postgresql postgresql_extensions: hstore
-	dev-lang/ruby:2.3 readline
+	dev-lang/ruby readline
 
 	# Prueba para ver si usa webkit:4.0
 	net-www/midori webkit2
 
 	# Enable google hangouts screen share.
-	x11-server/xorg-server record
+	x11-server/xorg-server record xephyr kdrive
 '

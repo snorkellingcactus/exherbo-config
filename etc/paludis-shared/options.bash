@@ -4,44 +4,8 @@ echo '
 	sys-boot/dracut providers: sysvinit
 	sys-auth/polkit providers: consolekit
 
-	x11-libs/wxGTK:3.0 providers: gtk2 gtk3
-	dev-python/atomicwrites python_abis: 3.4
-	dev-python/coverage python_abis: 3.4
-	dev-python/hypothesis python_abis: 3.4
-	dev-python/zopeinterface python_abis: 3.4
-	dev-python/more-itertools python_abis: 3.4
-	sys-devel/meson python_abis: -3.4 3.5 -3.6
-	sys-fs/fuse python_abis: 3.4
-	sys-fs/sshfs-fuse python_abis: 3.4
-	app-office/libreoffice python_abis: 3.4
-	media-libs/libopenshot python_abis: 3.4
-	media-video/openshot python_abis: 3.4
-	dev-python/pyzmq python_abis: 3.4
-	dev-python/httplib2 python_abis: 3.4
-	dev-python/requests python_abis: 3.4
-	dev-python/PyQt5 python_abis: 3.4
-	dev-python/chardet python_abis: 3.4
-	dev-python/cryptography python_abis: 3.4
-	dev-python/idna python_abis: 3.4
-	dev-python/pyopenssl python_abis: 3.4
-	dev-python/urllib3 python_abis: 3.4
-	dev-python/sip python_abis: 3.4
-	dev-python/six python_abis: 3.4
-	dev-python/cffi python_abis: 3.4
-	dev-python/packaging python_abis: 3.4
-	dev-python/asn1crypto python_abis: 3.4
-	dev-python/pycparser python_abis: 3.4
-	dev-python/pyparsing python_abis: 3.4
-	media-sound/cadence python_abis: 3.4
-	dev-python/PyQt4 python_abis: 3.4
-
-	dev-python/pytest-runner python_abis: 3.4
-	dev-python/certifi python_abis: 3.4
-	dev-python/setuptools python_abis: 3.4
-	dev-python/setuptools_scm python_abis: 3.4
-
-	*/* python_abis: -3.3
-	*/* -man -development -readline build_options: symbols=strip -recommended_tests dwarf_compress jobs=1 LIBC: glibc -musl parts: -documentation
+	*/* python_abis: -2.7
+	*/* -man -development -readline build_options: symbols=strip -recommended_tests dwarf_compress jobs=5 LIBC: glibc -musl parts: -documentation
 	*/* targets: x86_64-pc-linux-gnu i686-pc-linux-gnu
 	*/* -systemd consolekit
 	*/* providers: -systemd eudev rsyslog
@@ -61,7 +25,7 @@ echo '
 
 	app-text/poppler lcms cairo
 	net-dns/avahi dbus dns_sd
-	app-emulation/wine opengl gstreamer mono staging s3tc pulseaudio -vaapi -scanner -samba -oss openal
+	app-emulation/wine opengl gstreamer mono staging s3tc pulseaudio vaapi -scanner -samba -oss openal mp3 sdl pcap camera vkd3d vulkan
 	sys-sound/alsa-plugins pulseaudio
 	media-libs/openal pulseaudio
 
@@ -93,4 +57,14 @@ echo '
 	dev-scm/subversion perl
 
 	sys-apps/paludis search-index xml
+        gnome-desktop/dconf vapi
+        media-libs/libcanberra providers: gtk3
+	app-crypt/pinentry -qt5
+
+	# Temporary, for simplicity
+
+	dev-python/setuptools python_abis: 3.6 -3.7
+        dev-python/certifi python_abis: 3.6 -3.7
+        sys-devel/meson python_abis: 3.6 -3.7
+	media-sound/pulseaudio -journald
 '
