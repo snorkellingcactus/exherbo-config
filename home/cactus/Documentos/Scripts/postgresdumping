@@ -1,0 +1,4 @@
+
+dashboard@dashboard-web-1:~$ cat /home/cactus/pg_dump.sql.gz | gunzip | psql -h 10.142.0.2 -U dashboard -W
+Password for user dashboard:
+

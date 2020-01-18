@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# https://gist.github.com/mvollrath/9441717d0eb912fb50247e4d2fccf550
+# Usage: casper2docker /path/to/your/example.iso
+# In this case, the docker image would be named "example"
+# Requires tar, md5sum, and docker
+
+MY_NAME="casper2docker"
+ISO_PATH="${1?You must provide the path to an .iso}"
+image_name="`basename $ISO_PATH .iso`"
+tmpdir="/tmp/${MY_NAME}_${image_name}"
+isodir="$tmpdir/iso"
+squashdir="$tmpdir/squashfs"
+
+function cleanup() {
+  echo "beginning cleanup"
+  sudo /bin/umount "$squashdir"
+  sudo /bin/umount "$isodir"
+  sudo rm -rf "$tmpdir"
+}
+trap cleanup INT EXIT
+
+sudo mkdir -p "$isodir"
+sudo mkdir -p "$squashdir"
+
+sudo /bin/mount -o ro,loop "$ISO_PATH" "$isodir"
+
+echo "verifying filesystem"
+awk_prg='/filesystem.squashfs/ { print $1 }'
+expected_md5=`awk "$awk_prg" "$isodir/md5sum.txt"`
+actual_md5=`md5sum "$isodir/casper/filesystem.squashfs" | awk "$awk_prg"`
+
+echo "expected: $expected_md5"
+echo "actual:   $actual_md5"
+
+if [ "${actual_md5}" != "${expected_md5}" ]; then
+  echo "md5sum mismatch"
+#  exit 1
+fi
+
+sudo /bin/mount -o ro,loop -t squashfs "$isodir/casper/filesystem.squashfs" "$squashdir"
+
+echo "beginning import of $image_name"
+sudo /bin/tar -C "$squashdir" -c . | \
+  docker import -m "$MY_NAME import of $image_name" - "$image_name"

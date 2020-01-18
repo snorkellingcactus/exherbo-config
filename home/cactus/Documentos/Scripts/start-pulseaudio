@@ -1,0 +1,3 @@
+#!/bin/sh
+pulseaudio --start --use-pid-file=true -v --log-target=newfile:/tmp/pulseverbose.log --log-time=1
+start-pulseaudio-x11

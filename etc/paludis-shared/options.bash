@@ -5,7 +5,7 @@ echo '
 	sys-auth/polkit providers: consolekit
 
 	*/* python_abis: -2.7
-	*/* -man -development -readline build_options: symbols=strip -recommended_tests dwarf_compress jobs=5 LIBC: glibc -musl parts: -documentation
+	*/* -man -development -readline build_options: symbols=strip -recommended_tests dwarf_compress jobs=2 LIBC: glibc -musl parts: -documentation
 	*/* targets: x86_64-pc-linux-gnu i686-pc-linux-gnu
 	*/* -systemd consolekit
 	*/* providers: -systemd eudev rsyslog
@@ -63,8 +63,10 @@ echo '
 
 	# Temporary, for simplicity
 
-	dev-python/setuptools python_abis: 3.6 -3.7
-        dev-python/certifi python_abis: 3.6 -3.7
-        sys-devel/meson python_abis: 3.6 -3.7
+	*/* python_abis: -3.7
+
+	dev-python/setuptools python_abis: 3.6
+        dev-python/certifi python_abis: 3.6
+        sys-devel/meson python_abis: 3.6
 	media-sound/pulseaudio -journald
 '

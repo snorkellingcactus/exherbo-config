@@ -1,0 +1,2 @@
+cave -E :i686 resolve wine -W systemd -w eudev -1 -zC i -m x --suggestions ignore --recommendations ignore -S b -s b -n -0 
+'*/*::installed'

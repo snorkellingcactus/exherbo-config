@@ -20,6 +20,9 @@ echo '
 	net-fs/samba addc ads acl cups gnutls ldap system-krb5 winbind
 	media-sound/linuxsampler instruments-db
 	dev-libs/libxml2 python
+	# For itstool (fails otherwise), to compile caro
+       	dev-libs/libxml2 python_abis: 2.7 3.6
+
         media-sound/cantata http replaygain mtp
 	sci-apps/gnuplot qt5 gd
 	net-misc/tinc lzo vde
@@ -60,6 +63,7 @@ echo '
 	x11-libs/qtwebkit qtmultimedia build_options: jobs=1
 
 	games-emulation/mupen64plus-qt qt5
+
 	app-arch/quazip qt5
 
 	net-utils/s6-networking providers: bearssl
@@ -358,6 +362,10 @@ echo '
 
 	media-sound/cmus flac wav cue pulseaudio opus aac
 
+
+	# simple-scan:
+        sys-apps/colord vapi
+
 	#mate-control-center:
 	sys-apps/colord polkit
 	x11-libs/clutter gdk
@@ -470,6 +478,7 @@ echo '
 	games-fps/doomsday fmod client
 
 	games-emulation/mupen64plus-core asm
+        games-emulation/mupen64plus-ui-python python_abis: 3.6
 	# Para mupen:
 #	dev-python/PyQt5 dbus
 

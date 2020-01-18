@@ -1,0 +1,1 @@
+sudo gem install zget -- --with-dnssd-include=/usr/x86_64-pc-linux-gnu/include/avahi-compat-libdns_sd/

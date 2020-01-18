@@ -1,0 +1,5 @@
+require 'sequel/extensions/schema_dumper'
+DB.extension :schema_dumper
+File.write('/var/tmp/dump_schema_migration_cactus_20180101.deleteme', DB.dump_schema_migration(:same_db => true))
+
+# 1546455101_initial_schema_import.rb

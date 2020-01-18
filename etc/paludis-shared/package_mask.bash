@@ -22,4 +22,10 @@ echo '
 	>sys-apps/iproute2-4.13.0
 
 #	lxqt/*::lxde-unofficial
+sys-libs/libatomic:9
+sys-libs/libstdc++:9
+sys-libs/libgcc:9
+dev-lang/clang:9
+sys-libs/gcc:9
+sys-devel/gcc:9
 '

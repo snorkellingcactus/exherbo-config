@@ -46,5 +46,4 @@ echo '
 	games-sports/NFSIISE ~x86
 	media-sound/ardour ~x86
 	app-emulation/PCSX2 ~x86
-
 '
